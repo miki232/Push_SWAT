@@ -6,14 +6,13 @@
 /*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/13 16:27:42 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/14 19:11:07 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-#include <stdio.h>
-int ft_ordered(char *array)
+int ft_ordered(int *array)
 {
     int i;
     int j;
@@ -30,7 +29,7 @@ int ft_ordered(char *array)
     return (1);
 }
 
-int ft_equals(char **array)
+int ft_equals(int *array)
 {
     int i;
     int j;
@@ -48,12 +47,56 @@ int ft_equals(char **array)
     return (1);
 }
 
-int main()
+int *loader_int(char **argv, int argc)
 {
-    char* str = "12 36 6 5";
-	char **ret;
-	int i = 0;
-	ret = ft_split(str, ' ');
-	//printf("%s\n", ret[3]);
-	printf("%d", ft_equals(ret));
+    int i;
+    int *array;
+
+    i = 1;
+    array = malloc(sizeof(int) * argc - 1);
+    while (argv[i])
+    {
+      array[i - 1] = ft_atoi(argv[i]);
+      i++;
+    }
+    return (array);
+}
+
+void ft_isdigit(char **array)
+{
+    int i;
+    int j;
+
+    j = 0;
+    i = 0;
+    while (array[j++])
+    {
+        while (array[j][i])
+        {
+            if (array[j][i + 1] > 47 && array[j][i + 1] < 58)
+                i++;
+            else
+            {
+                printf("ERppr\n");
+                exit(0);
+            }
+            printf("%c\n", array[j][i]);
+        }
+    }
+}
+
+int	main(int argc, char **argv)
+{
+    (void)argc;
+    int *array;
+
+    ft_isdigit(argv);
+	array = loader_int(argv, argc);
+	while (*array)
+    {
+      printf("%d\n", *array);
+      array++;
+    }
+    // printf("%d\n", array[0]);
+    // printf("%d\n", array[1]);
 }
