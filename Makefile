@@ -6,13 +6,25 @@
 #    By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 18:25:59 by mtoia             #+#    #+#              #
-#    Updated: 2022/10/14 18:30:08 by mtoia            ###   ########.fr        #
+#    Updated: 2022/10/15 17:58:06 by mtoia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC = main.c utils.c split.c 
+T_BLK = \033[5m
+T_NRM = \033[25m
+T_CLR = \033[K
+C_YLW = \033[33m
+C_GRN = \033[32m
+C_LYLW = \033[93m
+C_LGRN = \033[92m
+C_LMGN = \033[95m
+C_END = \033[0m
+IND = 0
+PER = 0
+
+SRC = main.c utils.c split.c check.c
 
 HDRS = /
 
@@ -23,21 +35,26 @@ CFLAGS = -g -Wall -Werror -Wextra
 
 %.o: %.c 
 	@$(CC) $(CFLAGS) -I {HDRS} -c $< -o $@
+	@printf "$(T_CLR)$(C_LYLW)➜ ➜ progress: %3d %% $(C_END)\n\033[1A$(C_END)" $(PER);
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@echo "$(C_LGRN)➜ [$(NAME)] Program has been Compiled Successfully !$(C_END)"
 
 all: $(NAME)
 	make clean
 
 clean:
-	rm -f $(OBJ)
-	@echo "PUULIIIIIITOOOOOOO"
+	@rm -f $(OBJ)
+	@echo "$(C_LGRN)➜ [$(NAME)] Objects has been Cleared Successfully !$(C_END)"
 
 fclean:
-	rm -f $(NAME) $(OBJ)
-	@echo "TUTTOOOO PULITOOO"
+	@rm -f $(NAME) $(OBJ)
+	@echo "$(C_LGRN)➜ [$(NAME)] Program has been Cleared Successfully !$(C_END)"
 
-re: fclean $(NAME)
+re:
+	@rm -f $(NAME) $(OBJ)
+	@make  $(NAME)
+	@echo "$(C_LGRN)➜ [$(NAME)] Program has been re-Compiled Successfully !$(C_END)"
 
 .PHONY: all clean fclean re

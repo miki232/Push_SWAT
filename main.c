@@ -6,46 +6,11 @@
 /*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/14 19:11:07 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/15 17:52:53 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
-
-int ft_ordered(int *array)
-{
-    int i;
-    int j;
-    j = 0;
-    i = -1;
-    while (array[j])
-        j++;
-    while(array[j - 1] != array[i])
-    {
-        if (array[i] > array[i + 1])
-            return (0);
-        i++;
-    }
-    return (1);
-}
-
-int ft_equals(int *array)
-{
-    int i;
-    int j;
-    i = -1;
-    j = 0;
-    while(array[++i])
-    {
-        j = i;
-        while(array[++j])
-        {
-            if (array[i] == array[j])
-                return (0);
-        }
-    }
-    return (1);
-}
 
 int *loader_int(char **argv, int argc)
 {
@@ -53,50 +18,38 @@ int *loader_int(char **argv, int argc)
     int *array;
 
     i = 1;
-    array = malloc(sizeof(int) * argc - 1);
-    while (argv[i])
+    array = malloc(sizeof(int) * (argc - 1));
+    if (!array)
+        return (0);
+    while (i < argc)
     {
-      array[i - 1] = ft_atoi(argv[i]);
-      i++;
-    }
+        array[i - 1] = ft_atoi(argv[i]);
+        i++;
+    } 
     return (array);
-}
-
-void ft_isdigit(char **array)
-{
-    int i;
-    int j;
-
-    j = 0;
-    i = 0;
-    while (array[j++])
-    {
-        while (array[j][i])
-        {
-            if (array[j][i + 1] > 47 && array[j][i + 1] < 58)
-                i++;
-            else
-            {
-                printf("ERppr\n");
-                exit(0);
-            }
-            printf("%c\n", array[j][i]);
-        }
-    }
 }
 
 int	main(int argc, char **argv)
 {
-    (void)argc;
     int *array;
+    int argc2;
+    char    **arg; 
 
-    ft_isdigit(argv);
-	array = loader_int(argv, argc);
-	while (*array)
+    argc2 = 0;
+    if (ft_space(argv[1]))
     {
-      printf("%d\n", *array);
-      array++;
+        arg = ft_split(argv[1], ' ');
+        //printf("%s\n", arg[2]);
+        argc2 = check_dig2(arg);
+        array = loader_int(arg, argc2);
+        ft_equals(array, argc2);
+        ft_ordered(array, argc2);
     }
-    // printf("%d\n", array[0]);
-    // printf("%d\n", array[1]);
+    else
+    {
+        check_dig(argv);
+        array = loader_int(argv, argc);
+	    ft_equals(array, argc);
+        ft_ordered(array, argc);
+    }
 }
