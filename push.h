@@ -6,7 +6,7 @@
 /*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:06:16 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/16 18:25:14 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/16 19:52:04 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,11 @@ void		rev_rb(t_stack *stack_b);
 void		rev_ra(t_stack *stack_a);
 void		rev_ra_rb(t_stack *stack_a, t_stack *stack_b);
 void		ra_rb(t_stack *stack_a, t_stack *stack_b);
-void		simple_sort(t_stack *stack);
-void	min_val(t_stack *stack);
-void	five_guys(t_stack *stack, t_stack *stack_b);
-void    print_st(t_stack *stack);
+void		three_guys(t_stack *stack);
+void		min_val(t_stack *stack);
+void		five_guys(t_stack *stack, t_stack *stack_b);
+void   		print_st(t_stack *stack);
+void		four_guys(t_stack *stack_a, t_stack *stack_b);
 
 
 #endif
