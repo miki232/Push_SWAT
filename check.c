@@ -6,40 +6,43 @@
 /*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:14:31 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/15 17:51:34 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/16 16:31:09 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-void ft_ordered(int *array, int argc)
+void ft_ordered(t_stack *stack_a)
 {
     int i;
     int j;
     
     j = 1;
     i = 0;
-    while (array[i] < array[j])
+    while (stack_a->stack[i] < stack_a->stack[j])
     {
         i++;
         j++;
-        if ((i + 1) == (argc - 1))
+        if ((i + 1) == (stack_a->size))
+        {
             printf("Ordered");
+            exit(0);
+        }
     }
 }
 
-void ft_equals(int *array, int argc)
+void ft_equals(t_stack *stack_a)
 {
     int i;
     int j;
     
     i = 0;
     j = 1;
-    while(i < argc)
+    while(i < stack_a->size)
     {
-        while(j < argc - 1)
+        while(j < stack_a->size)
         {
-            if (array[i] == array[j])
+            if (stack_a->stack[i] == stack_a->stack[j])
             {
                 printf("equals\n");
                 exit(0);
