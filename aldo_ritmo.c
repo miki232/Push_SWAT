@@ -3,51 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   aldo_ritmo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackronos <blackronos@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:32:58 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/17 10:53:22 by blackronos       ###   ########.fr       */
+/*   Updated: 2022/10/17 15:29:23 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-void	three_guys(t_stack *stack)
+void	three_guys(t_stack *s)
 {
-	if(stack->stack[0] > stack->stack[1] && stack->stack[1] < stack->stack[2] && stack->stack[2] > stack->stack[0])
-		swap_a(stack);
-	else if(stack->stack[0] < stack->stack[1] && stack->stack[1] > stack->stack[2] && stack->stack[2] > stack->stack[0])
+	if (s->stack[0] > s->stack[1] && s->stack[1] < s->stack[2] \
+		&& s->stack[2] > s->stack[0])
+		swap_a(s);
+	else if (s->stack[0] < s->stack[1] && s->stack[1] > s->stack[2] \
+				&& s->stack[2] > s->stack[0])
 	{
-		swap_a(stack);
-		rotate_a(stack);
+		swap_a(s);
+		rotate_a(s);
 	}
-	else if(stack->stack[0] < stack->stack[1] && stack->stack[1] > stack->stack[2] && stack->stack[2] < stack->stack[0])
-		rev_ra(stack);
-	else if(stack->stack[0] > stack->stack[1] && stack->stack[1] > stack->stack[2] && stack->stack[2] < stack->stack[0])
+	else if (s->stack[0] < s->stack[1] && s->stack[1] > s->stack[2] \
+			&& s->stack[2] < s->stack[0])
+		rev_ra(s);
+	else if (s->stack[0] > s->stack[1] && s->stack[1] > s->stack[2] \
+			&& s->stack[2] < s->stack[0])
 	{
-		rotate_a(stack);
-		swap_a(stack);
+		rotate_a(s);
+		swap_a(s);
 	}
-	else if(stack->stack[0] > stack->stack[1] && stack->stack[1] < stack->stack[2] && stack->stack[2] < stack->stack[0])
-		rotate_a(stack);
+	else if (s->stack[0] > s->stack[1] && s->stack[1] < s->stack[2] \
+			&& s->stack[2] < s->stack[0])
+		rotate_a(s);
 }
 
-void	min_max_val(t_stack *stack)
+void	min_max_val(t_stack *s)
 {
 	int	i;
 
-	stack->max = 0;
-	stack->min = 0;
+	s->max = 0;
+	s->min = 0;
 	i = 0;
-	stack->max = stack->stack[0];
-	stack->min = stack->max;
-	while (i < stack->size)
+	s->max = s->stack[0];
+	s->min = s->max;
+	while (i < s->size)
 	{
-		if (stack->max < stack->stack[i])
- 			stack->max = stack->stack[i];
-		if (stack->min > stack->stack[i])
- 			stack->min = stack->stack[i];
-		i++;	
+		if (s->max < s->stack[i])
+			s->max = s->stack[i];
+		if (s->min > s->stack[i])
+			s->min = s->stack[i];
+		i++;
 	}
 }
 
@@ -58,7 +63,7 @@ void	four_guys(t_stack *stack_a, t_stack *stack_b)
 		rotate_a(stack_a);
 	push_to_b(stack_a, stack_b);
 	three_guys(stack_a);
-	push_to_a(stack_a, stack_b);	
+	push_to_a(stack_a, stack_b);
 }
 
 void	five_guys(t_stack *stack_a, t_stack *stack_b)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackronos <blackronos@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 11:40:18 by blackronos        #+#    #+#             */
-/*   Updated: 2022/10/17 11:40:33 by blackronos       ###   ########.fr       */
+/*   Updated: 2022/10/17 16:20:42 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	rotate(t_stack *stack)
 {
 	int	temp;
 	int	i;
-	
+
 	i = 0;
 	temp = stack->stack[0];
 	while (i < stack->size)

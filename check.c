@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackronos <blackronos@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:14:31 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/17 11:35:53 by blackronos       ###   ########.fr       */
+/*   Updated: 2022/10/17 15:12:29 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_ordered(t_stack *stack_a)
 {
 	int	i;
 	int	j;
-	
+
 	j = 1;
 	i = 0;
 	while (stack_a->stack[i] < stack_a->stack[j])
@@ -35,12 +35,12 @@ void	ft_equals(t_stack *stack_a)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	j = 1;
-	while(i < stack_a->size)
+	while (i < stack_a->size)
 	{
-		while(j < stack_a->size)
+		while (j < stack_a->size)
 		{
 			if (stack_a->stack[i] == stack_a->stack[j])
 			{
@@ -61,7 +61,7 @@ int	isdigits(char *arg)
 	i = 0;
 	while (arg[i])
 	{
-		if((arg[i] > 47 && arg[i] < 58) || arg[i] == 45 || arg[i] == 43)
+		if ((arg[i] > 47 && arg[i] < 58) || arg[i] == 45 || arg[i] == 43)
 			i++;
 		else
 		{
@@ -69,41 +69,19 @@ int	isdigits(char *arg)
 			exit(0);
 		}
 	}
-	return(1);
+	return (1);
 }
 
-int		ft_space(char *arg)
+int	ft_space(char *arg)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arg[i] != '\0')
 	{
-		if(arg[i] == ' ')
-			return(1);
+		if (arg[i] == ' ')
+			return (1);
 		i++;
 	}
 	return (0);
-}
-
-void	check_dig(char **arg)
-{
-	int	i;
-
-	i = 1;
-	while (arg[i])
-		isdigits(arg[i++]);
-}
-
-int	check_dig2(char **arg)
-{
-	int	i;
-
-	i = 0;
-	while (arg[i])
-	{
-		isdigits(arg[i]);
-		i++;
-	}
-	return (i);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackronos <blackronos@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/17 11:36:46 by blackronos       ###   ########.fr       */
+/*   Updated: 2022/10/17 16:38:46 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,7 @@ int	*loader_int(char **argv, t_stack *stack_a, int i, int c)
 		i++;
 	}
 	return (0);
-}
-
-void	print_st(t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	// while (i < stack->size)
-	// {
-	//     printf("%d ", i);
-	//     i++;
-	// }
-	// printf("index \n");
-	i = 0;
-	while (i < stack->size)
-	{
-		printf("%d ", stack->stack[i]);
-		i++;
-	}
-	printf(" stack_%c ha %d elementi \n----------\n", stack->id, stack->size);
+	free(stack_a);
 }
 
 int	init_struct(t_stack *stack_a, t_stack *stack_b)
@@ -59,7 +40,7 @@ int	init_struct(t_stack *stack_a, t_stack *stack_b)
 	return (0);
 }
 
-void	checker_one(t_stack *stack_a, t_stack *stack_b,char **argv)
+void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 {
 	char	**arg;
 
@@ -109,10 +90,12 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 	{
 		printf("ERROR\n");
-		exit(0); 
+		exit(0);
 	}
 	if (ft_space(argv[1]))
 		checker_one(&stack_a, &stack_b, argv);
 	else
 		checker_two(&stack_a, &stack_b, argc, argv);
+	// free(&stack_a);
+	// free(&stack_b);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 18:23:40 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/16 11:27:28 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/17 15:09:33 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,60 @@ int	ft_atoi(const char *str)
 	if (value < -2147483648 || value > 2147483647)
 		return (-1);
 	return ((int)value);
+}
+
+void	check_dig(char **arg)
+{
+	int	i;
+
+	i = 1;
+	while (arg[i])
+		isdigits(arg[i++]);
+}
+
+int	check_dig2(char **arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		isdigits(arg[i]);
+		i++;
+	}
+	return (i);
+}
+
+void	print_st(t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	// while (i < stack->size)
+	// {
+	//     printf("%d ", i);
+	//     i++;
+	// }
+	// printf("index \n");
+	i = 0;
+	while (i < stack->size)
+	{
+		printf("%d ", stack->stack[i]);
+		i++;
+	}
+	printf(" stack_%c ha %d elementi \n----------\n", stack->id, stack->size);
+}
+
+int	has_spaces(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ' ')
+			return (1);
+		i++;
+	}
+	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: blackronos <blackronos@student.42.fr>      +#+  +:+       +#+         #
+#    By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 18:25:59 by mtoia             #+#    #+#              #
-#    Updated: 2022/10/17 11:43:05 by blackronos       ###   ########.fr        #
+#    Updated: 2022/10/17 15:08:31 by mardolin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,9 @@ clean:
 fclean:
 	@rm -f $(NAME) $(OBJ)
 	@echo "$(C_LGRN)➜ [$(NAME)] Program has been Cleared Successfully !$(C_END)"
+
+norme:
+	@norminette $(SRC)
 
 re:
 	@rm -f $(NAME) $(OBJ)

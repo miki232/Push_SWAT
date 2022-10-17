@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackronos <blackronos@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 10:06:16 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/17 11:27:54 by blackronos       ###   ########.fr       */
+/*   Created: 2022/10/05 10:06:16 by mardolin          #+#    #+#             */
+/*   Updated: 2022/10/17 15:22:19 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef	PUSH_H
+
 # define PUSH_H
 # include <unistd.h>
 # include <stdlib.h>

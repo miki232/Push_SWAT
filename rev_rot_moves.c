@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_rot_moves.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: blackronos <blackronos@student.42.fr>      +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 11:41:17 by blackronos        #+#    #+#             */
-/*   Updated: 2022/10/17 11:41:33 by blackronos       ###   ########.fr       */
+/*   Updated: 2022/10/17 15:17:51 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ void	reverse_rotate(t_stack *stack)
 {
 	int	*temp;
 	int	i;
-	
+
 	i = 0;
-	//temp = stack->stack[stack->size - 1];
 	temp = malloc(sizeof(int) * stack->size);
 	while (i < stack->size)
 	{
