@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: blackronos <blackronos@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:06:16 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/16 19:52:04 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/17 11:27:54 by blackronos       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,8 @@ typedef	struct s_stack
 	int		size;
 	char	id;
 	int		max;
-	int 	min;
+	int		min;
 }			t_stack;
-
 
 char		**ft_split(const char *s, char c);
 int			get_word(const char *s, char c);
@@ -35,8 +34,8 @@ int			ft_atoi(const char *str);
 void		ft_ordered(t_stack *stack_a);
 void		ft_equals(t_stack *stack_a);
 int			isdigits(char *arg);
-void   		check_dig(char **arg);
-int  		check_dig2(char **arg);
+void		check_dig(char **arg);
+int			check_dig2(char **arg);
 int			ft_space(char *arg);
 void		swap_a(t_stack *stack_a);
 void		swap_b(t_stack *stack_b);
@@ -55,8 +54,10 @@ void		ra_rb(t_stack *stack_a, t_stack *stack_b);
 void		three_guys(t_stack *stack);
 void		min_val(t_stack *stack);
 void		five_guys(t_stack *stack, t_stack *stack_b);
-void   		print_st(t_stack *stack);
+void		print_st(t_stack *stack);
 void		four_guys(t_stack *stack_a, t_stack *stack_b);
-
+int 		init_struct(t_stack *stack_a, t_stack *stack_b);
+void 		checker_one(t_stack *stack_a, t_stack *stack_b,char **argv);
+void 		checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
 
 #endif

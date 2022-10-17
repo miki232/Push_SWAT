@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aldo_ritmo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: blackronos <blackronos@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:32:58 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/16 19:52:24 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/17 10:53:22 by blackronos       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,6 @@ void	four_guys(t_stack *stack_a, t_stack *stack_b)
 
 void	five_guys(t_stack *stack_a, t_stack *stack_b)
 {
-	int	i;
-
-	i = 0;
 	min_max_val(stack_a);
 	while (stack_a->stack[0] != stack_a->max)
 		rotate_a(stack_a);
