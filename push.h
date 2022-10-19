@@ -6,7 +6,7 @@
 /*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:06:16 by mardolin          #+#    #+#             */
-/*   Updated: 2022/10/17 20:51:41 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/19 16:38:05 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char		*ft_strdup(const char *s);
 int			ft_strlen(char *str);
 void	min_max_val(t_stack *s);
 void	secondmin(t_stack *s);
-void	init(t_chunk *chunk);
+void	init(t_chunk *chunk, t_stack *stack_a);
 void	sort(t_stack *stack_a, t_stack *stack_b);
 int			ft_atoi(const char *str);
 void		ft_ordered(t_stack *stack_a);
