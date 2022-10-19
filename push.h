@@ -27,6 +27,17 @@ typedef	struct s_stack
 	int		k;
 }			t_stack;
 
+typedef	struct s_chunk
+{
+	int		*cnk_1;
+	int		*cnk_2;
+	int		*cnk_3;
+	int		*cnk_4;
+	int		*cnk_5;
+
+}		t_chunk;
+
+
 char		**ft_split(const char *s, char c);
 int			get_word(const char *s, char c);
 char		*ft_substr(const char *s, int start, int len);
@@ -34,6 +45,8 @@ char		*ft_strdup(const char *s);
 int			ft_strlen(char *str);
 void	min_max_val(t_stack *s);
 void	secondmin(t_stack *s);
+void	init(t_chunk *chunk);
+void	sort(t_stack *stack_a, t_stack *stack_b);
 int			ft_atoi(const char *str);
 void		ft_ordered(t_stack *stack_a);
 void		ft_equals(t_stack *stack_a);

@@ -31,7 +31,7 @@ HDRS = /
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
-CFLAGS = -g -Wall -Werror -Wextra
+CFLAGS = -g 
 
 %.o: %.c 
 	@$(CC) $(CFLAGS) -I {HDRS} -c $< -o $@

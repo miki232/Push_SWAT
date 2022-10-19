@@ -85,10 +85,8 @@ void	secondmin(t_stack *s)
 {
 	int i;
 	int temp;
-	int	c;
 
 	i = 0;
-	c = 0;
 	temp = s->min;
 	while (temp < s->max)
 	{
@@ -230,4 +228,58 @@ void	sortea(t_stack *stack_a, t_stack *stack_b)
 	// min_max_val(stack_a);
 	// printf("%d\n", stack_a->min);
 	// secondmin(stack_a);
+}
+
+void	init(t_chunk *chunk)
+{
+	int	i = 0;
+	chunk->cnk_1 = malloc(sizeof(int) * 20);
+	chunk->cnk_2 = malloc(sizeof(int) * 20);
+	chunk->cnk_3 = malloc(sizeof(int) * 20);
+	chunk->cnk_4 = malloc(sizeof(int) * 20);
+	chunk->cnk_5 = malloc(sizeof(int) * 20);
+	while (i <= 100)
+	{
+		if (i < 20)
+			chunk->cnk_1[i] = i;
+		else if (i > 19 && i < 40)
+			chunk->cnk_2[i] = i;
+		else if (i > 39 && i < 60)
+			chunk->cnk_3[i] = i;
+		else if (i > 59 && i < 80)
+			chunk->cnk_4[i] = i;
+		else if (i > 79 && i <= 100)
+			chunk->cnk_5[i] = i;
+		i++;		
+	}
+}
+
+void	sort(t_stack *stack_a, t_stack *stack_b)
+{
+	(void)stack_b;
+	int i;
+	int	c = 0;
+	int	hlf = 0;
+	int	s = 1;
+	//int	hls = 0;
+	t_chunk cn;
+
+	init(&cn);
+	i = 0;
+	while (i < stack_a->size && s)
+	{
+		c = 0;
+		while (stack_a->stack[i] != cn.cnk_1[c] && c < 20)
+		{
+			c++;
+			if (stack_a->stack[i] == cn.cnk_1[c])
+			{
+				hlf = stack_a->stack[i];
+				s = 0;
+			}
+			printf("%d\n", hlf);
+		}
+		i++;
+	}
+	
 }
