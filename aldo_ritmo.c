@@ -252,15 +252,15 @@ void	checkss(t_chunk *chunk, t_stack *stack_a, t_stack *temp)
 	}
 }
 
-void	init(t_chunk *chunk, t_stack *stack_a)
+void	init(t_chunk *chunk, t_stack *stack_a, t_stack *temp)
 {
 	int	i = 0;
 	int	j = 0;
 	
-	t_stack temp;
-	temp.id = 't';
-	temp.stack = malloc(sizeof(int) * stack_a->size);
-	temp.size = stack_a->size;
+
+	temp->id = 't';
+	temp->stack = malloc(sizeof(int) * stack_a->size);
+	temp->size = stack_a->size;
 	chunk->cnk_1 = malloc(sizeof(int) * 20);
 	chunk->cnk_2 = malloc(sizeof(int) * 20);
 	chunk->cnk_3 = malloc(sizeof(int) * 20);
@@ -281,38 +281,38 @@ void	init(t_chunk *chunk, t_stack *stack_a)
 	// 	}
 	// 	j++;
 	// }
-	checkss(chunk, stack_a, &temp);
+	checkss(chunk, stack_a, temp);
 	i = 0;
 	//print_st(&temp);
 	int c = 0;
 	while (i <= 100)
 	{
 		if (i < 20)
-			chunk->cnk_1[i] = temp.stack[i];
+			chunk->cnk_1[i] = temp->stack[i];
 		else if (i > 19 && i < 40)
 		{
-			chunk->cnk_2[c] = temp.stack[i];
+			chunk->cnk_2[c] = temp->stack[i];
 			c++;
 			if (c == 20)
 				c = 0;
 		}
 		else if (i > 39 && i < 60)
 		{
-			chunk->cnk_3[c] = temp.stack[i];
+			chunk->cnk_3[c] = temp->stack[i];
 			c++;
 			if (c == 20)
 				c = 0;
 		}
 		else if (i > 59 && i < 80)
 		{
-			chunk->cnk_4[c] = temp.stack[i];
+			chunk->cnk_4[c] = temp->stack[i];
 			c++;
 			if (c == 20)
 				c = 0;
 		}
 		else if (i > 79 && i <= 100)
 		{
-			chunk->cnk_5[c] = temp.stack[i];
+			chunk->cnk_5[c] = temp->stack[i];
 			c++;
 			if (c == 20)
 				c = 0;
@@ -322,67 +322,177 @@ void	init(t_chunk *chunk, t_stack *stack_a)
 	//printf("%d\n", chunk->cnk_3[0]);
 }
 
+void	calc_moves(t_stack *stack)
+{
+	int i;
+	int c;
+
+	c = 0;
+	i = 0;
+	while (stack->stack[i] != stack->min)
+		i++;
+	while (stack->stack[c] != stack->max)
+		c++;
+	if	(i > stack->size / 2 && c > stack->size / 2)
+	{
+			stack->i_max = (stack->size - c);
+			stack->i_min = (stack->size - i);
+	}
+	else if	(i < stack->size / 2 && c < stack->size / 2)
+	{
+			stack->i_max = c;
+			stack->i_min = i;
+	}
+	else if	(i < stack->size / 2 && c > stack->size / 2)
+	{
+			stack->i_max = (stack->size - c);
+			stack->i_min = i;
+	}
+	else if	(i > stack->size / 2 && c < stack->size / 2)
+	{
+			stack->i_max = c;
+			stack->i_min = (stack->size - i);
+	}
+}
+
+int	shiva(t_stack *temp, t_stack *stack_a, t_stack *stack_b)
+{
+	int i;
+	int	c;
+
+	c = stack_b->size - 1;
+	i = 0;
+	while (temp->stack[i] != stack_a->stack[0])
+		i++;
+	while (c >= 0)
+	{
+		if (stack_b->stack[c] == temp->stack[i + 1])
+			return (stack_b->stack[c]);
+		else if (c == 0)
+		{
+			c = stack_b->size;
+			i++;
+		}
+		c--;
+	}
+	return (0);
+}
+
 void	sort(t_stack *stack_a, t_stack *stack_b)
 {
-	(void)stack_b;
-	(void)stack_a;
 	int i;
 	int	c = 0;
 	int	hlf = 0;
 	int	s = 1;
 	int	hls = 0;
+	int	sec = 0;
 	t_chunk cn;
+	t_stack temp;
 	
 	min_max_val(stack_a);
-	init(&cn, stack_a);
+	init(&cn, stack_a, &temp);
 	i = 0;
-	while (i < stack_a->size && s)
+	while (stack_a->size > (80))
 	{
-		c = 0;
-		while (stack_a->stack[i] != cn.cnk_1[c] && c < 20)
+		while (i < stack_a->size && s)
 		{
-			c++;
-			if (stack_a->stack[i] == cn.cnk_1[c])
+			c = 0;
+			while (stack_a->stack[i] != cn.cnk_1[c] && c < 20)
 			{
-				hlf = stack_a->stack[i];
-				s = 0;
+				c++;
+				if (stack_a->stack[i] == cn.cnk_1[c])
+				{
+					hlf = stack_a->stack[i];
+					s = 0;
+				}
 			}
-		}
-		i++;
-	}
-	printf("%d\n", hlf);
-	s = 1;
-	i = stack_a->size - 1;
-	while (i > 0 && s)
-	{
-		c = 0;
-		while ((stack_a->stack[i] != cn.cnk_1[c] || stack_a->stack[i] == cn.cnk_1[c]) && c < 20)
-		{
-			if (stack_a->stack[i] == cn.cnk_1[c])
-			{
-				hls = stack_a->stack[i];
-				s = 0;
-			}
-			c++;
-		}
-		i--;
-	}
-	i = 0;
-	while (stack_a->stack[i] != hlf)
 			i++;
-	c = stack_a->size - 1;
-	while (stack_a->stack[c] != hls || stack_a->stack[c] == hls)
-	{
-		if (stack_a->stack[c] == hls)
-		{
-			break ;
 		}
-		c--;
+		s = 1;
+		i = stack_a->size - 1;
+		while (i > 0 && s)
+		{
+			c = 0;
+			while ((stack_a->stack[i] != cn.cnk_1[c] || stack_a->stack[i] == cn.cnk_1[c]) && c < 20)
+			{
+				if (stack_a->stack[i] == cn.cnk_1[c])
+				{
+					hls = stack_a->stack[i];
+					s = 0;
+				}
+				c++;
+			}
+			i--;
+		}
+		i = 0;
+		while (stack_a->stack[i] != hlf)
+				i++;
+		c = stack_a->size - 1;
+		while (stack_a->stack[c] != hls || stack_a->stack[c] == hls)
+		{
+			if (stack_a->stack[c] == hls)
+			{
+				break ;
+			}
+			c--;
+		}
+		if ((stack_a->size - c) > i)
+		{	
+			printf("%d\n", i);
+			printf("i é minore\n");
+			while (i > 0)
+			{
+				rotate_a(stack_a);
+				i--;
+			}
+		}
+		else
+		{
+			printf("%d %d\n", hls, (c));
+			printf("c é minore\n");
+			while (c < stack_a->size)
+			{
+				rev_ra(stack_a);
+				c++;
+			}
+		}
+		if (stack_b->size < 1)
+			push_to_b(stack_a, stack_b);
+		else if (stack_a->stack[0] < stack_b->min || stack_a->stack[0] > stack_b->max)
+		{
+			min_max_val(stack_b);
+			printf("%d %d\n", stack_b->min, stack_b->max);
+			while (stack_b->stack[0] != stack_b->min)
+			{
+				rotate_b(stack_b);
+				// check_move();
+			}
+			push_to_b(stack_a, stack_b);
+		}
+		else 
+		{
+			printf("A0 = %d\n", stack_a->stack[0]);
+			sec = shiva(&temp, stack_a, stack_b);
+			while (stack_b->stack[0] != sec)
+			{
+				rotate_b(stack_b);
+			}
+			push_to_b(stack_a, stack_b);
+			printf("sec  %d\n", sec);
+		}
+		// if ()
+		// {
+		// 	/* code */
+		// }
+		
+		//min_max_val(stack_b);
+		// while (stack_b->stack[0] != stack_b->min)
+		// {
+		// 	calc_moves(stack_b);
+		// }
+		print_st(stack_b);
+		print_st(stack_a);
 	}
-	if (c > i)
-		printf("i é minore\n");
-	else
-		printf("c é minore\n");
 	//printf("%d deve fare %d mosse, %d deve fare %d mosse\n", hlf, i, hls, (stack_a->size - c));
 	
 }
