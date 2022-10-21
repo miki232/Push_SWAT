@@ -47,7 +47,7 @@ char		*ft_strdup(const char *s);
 int			ft_strlen(char *str);
 void	min_max_val(t_stack *s);
 void	secondmin(t_stack *s);
-void	init(t_chunk *chunk, t_stack *stack_a, t_stack *temp);
+int	**init(int **chunk, t_stack *stack_a, t_stack *temp);
 void	sort(t_stack *stack_a, t_stack *stack_b);
 int			ft_atoi(const char *str);
 void		ft_ordered(t_stack *stack_a);
