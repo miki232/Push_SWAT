@@ -31,7 +31,7 @@ HDRS = /
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
-CFLAGS = -g 
+CFLAGS = -Wall -Werror -Wextra 
 
 %.o: %.c 
 	@$(CC) $(CFLAGS) -I {HDRS} -c $< -o $@
@@ -60,4 +60,4 @@ re:
 	@make  $(NAME)
 	@echo "$(C_LGRN)➜ [$(NAME)] Program has been re-Compiled Successfully !$(C_END)"
 
-.PHONY: all clean fclean re
+.PHONY: all | clean | fclean | re

@@ -27,6 +27,10 @@ typedef	struct s_stack
 	int		i_max;
 	int		i_min;
 	int		k;
+	int		hlf;
+	int		hls;
+	int		mv_first;
+	int		mv_second;
 }			t_stack;
 
 typedef	struct s_chunk
