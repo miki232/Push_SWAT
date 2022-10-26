@@ -270,6 +270,17 @@ void	checkss(t_stack *stack_a, t_stack *temp)
 	}
 }
 
+void	printcn(int **chunk, int c)
+{
+	int	i = 0;
+	while (i < 45)
+	{
+		printf("Al chunck[%d][%d] = %d \n", c, i, chunk[c][i]);
+		i++;
+	}
+	
+}
+
 int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 {
 	int	i = 0;
@@ -286,13 +297,13 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 		i++;
 	}
 	checkss(stack_a, temp);
-	i = 4;
+	i = 0;
 	//print_st(&temp);
 	int c = 10;
 	while (i < 495)
 	{
 		if (i < 45)
-			chunk[c][j] = temp->stack[i - 4];
+			chunk[c][j] = temp->stack[i];
 		else if (i > 44 && i < 90)
 		{
 			if(i == 45)
@@ -300,7 +311,7 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 				j = 44;
 				c--;
 			}
-			chunk[c][j] = temp->stack[i - 4];
+			chunk[c][j] = temp->stack[i];
 			//printf("c%d\n", j);
 		}
 		else if (i > 89 && i < 135)
@@ -310,7 +321,7 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 				j = 44;
 				c--;
 			}
-			chunk[c][j] = temp->stack[i - 4];
+			chunk[c][j] = temp->stack[i];
 		}
 		else if (i > 134 && i < 180)
 		{
@@ -319,7 +330,7 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 				j = 44;
 				c--;
 			}
-			chunk[c][j] = temp->stack[i - 4];
+			chunk[c][j] = temp->stack[i];
 		}
 		else if (i > 179 && i < 225)
 		{
@@ -328,7 +339,7 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 				j = 44;
 				c--;
 			}
-			chunk[c][j] = temp->stack[i - 4];
+			chunk[c][j] = temp->stack[i];
 		}
         else if (i > 224 && i < 270)
 		{
@@ -337,7 +348,7 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 				j = 44;
 				c--;
 			}
-			chunk[c][j] = temp->stack[i - 4];
+			chunk[c][j] = temp->stack[i];
 		}
         else if (i > 269 && i < 315)
 		{
@@ -346,7 +357,7 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 				j = 44;
 				c--;
 			}
-			chunk[c][j] = temp->stack[i - 4];
+			chunk[c][j] = temp->stack[i];
 		}
         else if (i > 314 && i < 360)
 		{
@@ -355,7 +366,7 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 				j = 44;
 				c--;
 			}
-			chunk[c][j] = temp->stack[i - 4];
+			chunk[c][j] = temp->stack[i];
 		}
         else if (i > 359 && i < 405)
 		{
@@ -364,7 +375,7 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 				j = 44;
 				c--;
 			}
-			chunk[c][j] = temp->stack[i - 4];
+			chunk[c][j] = temp->stack[i];
 		}
         else if (i > 404 && i < 450)
 		{
@@ -373,7 +384,7 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 				j = 44;
 				c--;
 			}
-			chunk[c][j] = temp->stack[i - 4];
+			chunk[c][j] = temp->stack[i];
 		}
         else if (i > 449 && i < 495)
 		{
@@ -382,12 +393,13 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 				j = 44;
 				c--;
 			}
-			chunk[c][j] = temp->stack[i - 4];
+			chunk[c][j] = temp->stack[i];
 		}
 		i++;
 		j--;
 	}
-	//printf("cn  %d\n", chunk[10][44]);
+	//printcn(chunk, 0);
+	//printf("cn  %d\n", chunk[10][1]);
 	return (chunk);
 
 }
@@ -625,24 +637,20 @@ void	sortc(t_stack *stack_a, t_stack *stack_b)
 		chunck_index_increment(stack_b);
 
 	}
-	// i = 0;
-	// min_max_val(stack_b);
-	// if (stack_a->size == 5)
-	// 	five_guys(stack_a, stack_b);
-	// while (stack_b->stack[0] != stack_b->max)
-	// {
-	// 	rotate_b(stack_b);
-	// }
-	// if (stack_b->stack[0] == stack_b->max)
-	// {
-	// 	push_to_a(stack_a, stack_b);
-	// }
-	// while (stack_b->size > 0)
-	// {
-	// 	rev_rb(stack_b);
-	// 	push_to_a(stack_a, stack_b);
-	// }
-	print_st(stack_a);	
+	i = 0;
+	min_max_val(stack_b);
+	if (stack_a->size == 5)
+		five_guys(stack_a, stack_b);
+	while (stack_b->stack[0] != stack_b->max)
+	{
+		rev_rb(stack_b);
+	}
+	while (stack_b->stack[0] == stack_b->max && stack_b->size > 0)
+	{
+		push_to_a(stack_a, stack_b);
+		min_max_val(stack_b);
+	}
+	//print_st(stack_a);	
 }
 
 	// if ((stack_b->min > stack_a->size / 2) && stack_a->hlf > (stack_b->size / 2))

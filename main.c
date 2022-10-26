@@ -101,7 +101,7 @@ int	main(int argc, char **argv)
 		checker_one(&stack_a, &stack_b, argv);
 	else
 		checker_two(&stack_a, &stack_b, argc, argv);
-	print_st(&stack_b);
+	print_st(&stack_a);
 	// free(&stack_a);
 	// free(&stack_b);
 }
