@@ -31,6 +31,7 @@ typedef	struct s_stack
 	int		hls;
 	int		mv_first;
 	int		mv_second;
+	int		j;
 }			t_stack;
 
 typedef	struct s_chunk
@@ -40,10 +41,9 @@ typedef	struct s_chunk
 	int		*cnk_3;
 	int		*cnk_4;
 	int		*cnk_5;
-
 }		t_chunk;
 
-
+void	sortc(t_stack *stack_a, t_stack *stack_b);
 char		**ft_split(const char *s, char c);
 int			get_word(const char *s, char c);
 char		*ft_substr(const char *s, int start, int len);

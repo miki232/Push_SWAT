@@ -24,14 +24,14 @@ C_END = \033[0m
 IND = 0
 PER = 0
 
-SRC = main.c utils.c split.c check.c push_moves.c rev_rot_moves.c rotate_moves.c swap_moves.c aldo_ritmo.c
+SRC = main.c utils.c split.c check.c push_moves.c rev_rot_moves.c rotate_moves.c swap_moves.c cin.c
 
 HDRS = /
 
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra 
+CFLAGS =
 
 %.o: %.c 
 	@$(CC) $(CFLAGS) -I {HDRS} -c $< -o $@

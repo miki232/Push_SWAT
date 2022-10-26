@@ -82,7 +82,8 @@ void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 	// print_st(stack_a);
 	// print_st(stack_a);
 	//sortea(stack_a, stack_b);
-	sort(stack_a, stack_b);
+	//sort(stack_a, stack_b);
+	sortc(stack_a, stack_b);
 	// print_st(stack_b);
 }
 

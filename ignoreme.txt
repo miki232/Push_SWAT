@@ -10,3 +10,21 @@ git push -u origin main
 git remote add origin https://github.com/miki232/Push_SWAT.git
 git branch -M main
 git push -u origin main
+
+	// if ((stack_b->min > stack_a->size / 2) && stack_a->hlf > (stack_b->size / 2))
+	// 		{
+	// 			while (stack_b->stack[0] != stack_b->min && stack_a->stack[0] != stack_a->hlf)
+	// 			{
+	// 				//printf("okkkkkkkk\n");
+	// 				rev_ra_rb(stack_a, stack_b);
+	// 			}
+	// 		}
+	// 		i = moves_for_first(stack_a);
+	// 		if ((stack_b->min < stack_a->size / 2) && stack_a->hlf < (stack_b->size / 2))
+	// 		{
+	// 			while (stack_b->stack[0] != stack_b->min && stack_a->stack[0] != stack_a->hlf)
+	// 			{
+	// 				//printf("okkkkkkkk\n");
+	// 				ra_rb(stack_a, stack_b);
+	// 			}
+	// 		}
