@@ -66,13 +66,6 @@ void	print_st(t_stack *stack)
 	int	i;
 
 	i = 0;
-	// while (i < stack->size)
-	// {
-	//     printf("%d ", i);
-	//     i++;
-	// }
-	// printf("index \n");
-	i = 0;
 	while (i < stack->size)
 	{
 		printf("%d ", stack->stack[i]);

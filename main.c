@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/17 16:38:46 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/10/19 16:53:46 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 	init_struct(stack_a, stack_b);
 	check_dig(argv);
 	stack_a->size = argc - 1;
+	stack_a->k = 0;
+	stack_b->k = 0;
 	stack_b->stack = malloc(sizeof(int) * stack_a->size);
 	loader_int(argv, stack_a, 1, 1);
 	ft_equals(stack_a);
@@ -77,16 +79,19 @@ void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 		four_guys(stack_a, stack_b);
 	else if (stack_a->size == 5)
 		five_guys(stack_a, stack_b);
-	//print_st(&stack_a);
-	print_st(stack_a);
-	print_st(stack_b);
+	// print_st(stack_a);
+	// print_st(stack_a);
+	//sortea(stack_a, stack_b);
+	sort(stack_a, stack_b);
+	//sortc(stack_a, stack_b);
+	// print_st(stack_b);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
-
+	
 	if (argc < 2)
 	{
 		printf("ERROR\n");
@@ -96,6 +101,7 @@ int	main(int argc, char **argv)
 		checker_one(&stack_a, &stack_b, argv);
 	else
 		checker_two(&stack_a, &stack_b, argc, argv);
+	//print_st(&stack_a);
 	// free(&stack_a);
 	// free(&stack_b);
 }

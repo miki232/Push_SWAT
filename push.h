@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:06:16 by mardolin          #+#    #+#             */
-/*   Updated: 2022/10/17 15:22:19 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/10/19 16:38:05 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,35 @@ typedef	struct s_stack
 	char	id;
 	int		max;
 	int		min;
+	int		i_max;
+	int		i_min;
+	int		k;
+	int		hlf;
+	int		hls;
+	int		mv_first;
+	int		mv_second;
+	int		j;
 }			t_stack;
 
+typedef	struct s_chunk
+{
+	int		*cnk_1;
+	int		*cnk_2;
+	int		*cnk_3;
+	int		*cnk_4;
+	int		*cnk_5;
+}		t_chunk;
+
+void	sortc(t_stack *stack_a, t_stack *stack_b);
 char		**ft_split(const char *s, char c);
 int			get_word(const char *s, char c);
 char		*ft_substr(const char *s, int start, int len);
 char		*ft_strdup(const char *s);
 int			ft_strlen(char *str);
+void	min_max_val(t_stack *s);
+void	secondmin(t_stack *s);
+int	**init(int **chunk, t_stack *stack_a, t_stack *temp);
+void	sort(t_stack *stack_a, t_stack *stack_b);
 int			ft_atoi(const char *str);
 void		ft_ordered(t_stack *stack_a);
 void		ft_equals(t_stack *stack_a);
@@ -60,5 +82,6 @@ void		four_guys(t_stack *stack_a, t_stack *stack_b);
 int 		init_struct(t_stack *stack_a, t_stack *stack_b);
 void 		checker_one(t_stack *stack_a, t_stack *stack_b,char **argv);
 void 		checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
+void		sortea(t_stack *stack_a, t_stack *stack_b);
 
 #endif
