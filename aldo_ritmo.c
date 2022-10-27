@@ -506,25 +506,39 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 			while (i > 0)
 			{
 				min_max_val(stack_b);
-				if (stack_a->hlf < stack_b->min || stack_a->hlf > stack_b->max)
+				if (stack_b->size > 1)
 				{
-					if (stack_b->stack[0] != stack_b->max && stack_a->stack[0] != stack_a->hlf)
+					if (stack_a->hlf < stack_b->min || stack_a->hlf > stack_b->max)
 					{
-						moves_count_min_max(stack_b, stack_b->max);
-						if (stack_b->i_min < (stack_b->size / 2))
-							rev_ra_rb(stack_a, stack_b);
-					}					
-				}
-				else
-				{
-					sec = shiva(&temp, stack_a, stack_b);
-					while (/* condition */)
-					{
-						/* code */
+						if (stack_b->stack[0] != stack_b->max && stack_a->stack[0] != stack_a->hlf)
+						{
+							moves_count_min_max(stack_b, stack_b->max);
+							while (stack_b->i_min < (stack_b->size / 2) && stack_a->stack[0] != stack_a->hlf && stack_b->stack[0] != stack_b->max)
+							{
+								//printf("okkkkk\n");
+								ra_rb(stack_a, stack_b);
+								i--;
+							}
+						}					
 					}
-					
+					else
+					{
+						sec = shiva(&temp, stack_a, stack_b);
+						if (stack_b->stack[0] != sec && stack_a->stack[0] != stack_a->hlf)
+						{
+							moves_count_min_max(stack_b, sec);
+							while (stack_b->i_min < (stack_b->size / 2) && stack_a->stack[0] != stack_a->hlf && stack_b->stack[0] != sec)
+							{
+								//printf("okkkkk\n");
+								ra_rb(stack_a, stack_b);
+								i--;
+							}
+						}
+
+					}
 				}
-				rotate_a(stack_a);
+				if(stack_a->stack[0] != stack_a->hlf)
+					rotate_a(stack_a);
 				i--;
 			}
 		}
@@ -532,10 +546,46 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 		{
 			while (c < stack_a->size)
 			{
-				rev_ra(stack_a);
+				min_max_val(stack_b);
+				if (stack_b->size > 1)
+				{
+					if (stack_a->hls < stack_b->min || stack_a->hls > stack_b->max)
+					{
+						if (stack_b->stack[0] != stack_b->max && stack_a->stack[0] != stack_a->hls)
+						{
+							moves_count_min_max(stack_b, stack_b->max);
+							while (stack_b->i_min > (stack_b->size / 2) && stack_a->stack[0] != stack_a->hls && stack_b->stack[0] != stack_b->max)
+							{
+								//printf("okkkkk\n");
+								rev_ra_rb(stack_a, stack_b);
+								c++;
+							}
+						}					
+					}
+					else
+					{
+						sec = shiva(&temp, stack_a, stack_b);
+						if (stack_b->stack[0] != sec && stack_a->stack[0] != stack_a->hls)
+						{
+							moves_count_min_max(stack_b, sec);
+							while (c < stack_a->size && stack_b->i_min > (stack_b->size / 2 && stack_a->stack[0] != stack_a->hls && stack_b->stack[0] != sec))
+							{
+								rev_ra_rb(stack_a, stack_b);
+								c++;
+							}
+							//printf("okkkkk\n");
+
+						}
+
+					}
+				}
+				if (stack_a->stack[0] != stack_a->hls)
+					rev_ra(stack_a);
 				c++;
 			}
 		}
+		// printf("hls = %d  hlf = %d\n stack_a[0] %d\n", stack_a->hls, stack_a->hlf, stack_a->stack[0]);
+		// print_st(stack_b);
 		min_max_val(stack_b);
 		if (stack_b->size < 1)
 			push_to_b(stack_a, stack_b);
