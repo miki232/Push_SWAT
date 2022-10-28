@@ -405,6 +405,11 @@ int	shiva(t_stack *temp, t_stack *stack_a, t_stack *stack_b)
 	return (0);
 }
 
+// int	secmin(t_stack *temp, t_stack *stack_a, t_stack *stack_b)
+// {
+
+// }
+
 void	hold_first_num(t_stack *stack_a, int **cn, int j)
 {
 	int i;
@@ -439,7 +444,7 @@ void	hold_second_num(t_stack *stack_a, int **cn, int j)
 	c = 0;
 	s = 1;
 	i = stack_a->size - 1;
-	while (i > 0 && s)
+	while (i >= 0 && s)
 	{
 		c = 0;
 		while ((stack_a->stack[i] != cn[j][c] || stack_a->stack[i] == cn[j][c]) && c < 20)
@@ -513,9 +518,9 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 						if (stack_b->stack[0] != stack_b->max && stack_a->stack[0] != stack_a->hlf)
 						{
 							moves_count_min_max(stack_b, stack_b->max);
-							while (stack_b->i_min < (stack_b->size / 2) && stack_a->stack[0] != stack_a->hlf && stack_b->stack[0] != stack_b->max)
+							while (stack_b->i_min < (stack_b->size / 2) && stack_a->stack[0] != stack_a->hlf && stack_b->stack[0] != stack_b->max && i > 0)
 							{
-								//printf("okkkkk\n");
+								 printf("afrocioooooo\n");
 								ra_rb(stack_a, stack_b);
 								i--;
 							}
@@ -527,9 +532,9 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 						if (stack_b->stack[0] != sec && stack_a->stack[0] != stack_a->hlf)
 						{
 							moves_count_min_max(stack_b, sec);
-							while (stack_b->i_min < (stack_b->size / 2) && stack_a->stack[0] != stack_a->hlf && stack_b->stack[0] != sec)
+							while (stack_b->i_min < (stack_b->size / 2) && stack_a->stack[0] != stack_a->hlf && stack_b->stack[0] != sec && i > 0)
 							{
-								//printf("okkkkk\n");
+								printf("okkkkk\n");
 								ra_rb(stack_a, stack_b);
 								i--;
 							}
@@ -564,23 +569,35 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 					}
 					else
 					{
-						sec = shiva(&temp, stack_a, stack_b);
+						 
+						// printf("stackb = %d, SEC = %d  HLS = %d\n", stack_b->stack[0], sec, stack_a->hlf);
+						// print_st(stack_b);
+						
 						if (stack_b->stack[0] != sec && stack_a->stack[0] != stack_a->hls)
 						{
 							moves_count_min_max(stack_b, sec);
-							while (c < stack_a->size && stack_b->i_min > (stack_b->size / 2 && stack_a->stack[0] != stack_a->hls && stack_b->stack[0] != sec))
+							while (c < stack_a->size && stack_b->i_min > (stack_b->size / 2) && stack_a->stack[0] != stack_a->hls && stack_b->stack[0] != sec && stack_b->i_min >= 0)
 							{
+								//printf("imin = %d\n", stack_b->i_min);
+								//moves_count_min_max(stack_b, sec);
 								rev_ra_rb(stack_a, stack_b);
+								stack_b->i_min--;
 								c++;
 							}
 							//printf("okkkkk\n");
 
 						}
-
 					}
 				}
 				if (stack_a->stack[0] != stack_a->hls)
-					rev_ra(stack_a);
+				{
+					//printf("stacka = %d, HLS = %d\n", stack_a->stack[0], stack_a->hls);
+					moves_count_min_max(stack_a, stack_a->hls);
+					if (stack_a->i_min > (stack_a->size / 2))
+						rev_ra(stack_a);
+					else
+						rotate_a(stack_a);
+				}
 				c++;
 			}
 		}
@@ -604,6 +621,8 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 		else 
 		{
 			sec = shiva(&temp, stack_a, stack_b);
+			//printf("stackb = %d, SEC = %d  HLS = %d\n", stack_b->stack[0], sec, stack_a->hls);
+			// print_st(stack_b);
 			while (stack_b->stack[0] != sec)
 			{
 				moves_count_min_max(stack_b, sec);
@@ -625,16 +644,22 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 			j++;
 	}
 	i = 0;
-	min_max_val(stack_b);
+
 	while (stack_b->stack[0] != stack_b->max)
 	{
 		rotate_b(stack_b);
-	}
-	while (stack_b->stack[0] == stack_b->max && stack_b->size > 0)
-	{
-		push_to_a(stack_a, stack_b);
 		min_max_val(stack_b);
+		while (stack_b->stack[0] == stack_b->max && stack_b->size > 0)
+		{
+			push_to_a(stack_a, stack_b);
+			min_max_val(stack_b);
+		}
 	}
+	// while (stack_b->stack[0] == stack_b->max && stack_b->size > 0)
+	// {
+	// 	push_to_a(stack_a, stack_b);
+	// 	min_max_val(stack_b);
+	// }
 	// while (stack_b->stack[0] != stack_b->max)
 	// {
 	// 	rotate_b(stack_b);
@@ -648,5 +673,6 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	// 	rev_rb(stack_b);
 	// 	push_to_a(stack_a, stack_b);
 	// }
+	print_st(stack_b);
 	print_st(stack_a);	
 }
