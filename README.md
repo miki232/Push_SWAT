@@ -1,5 +1,7 @@
 # 42_PUSH_SWAP
 
+////calcolare quanto costa il movimento in di entrambi numeri in a (hlf, hls)compresi i  movimenti in b
+
 In computation, sorting is highly essential to access and manipulate data efficiently. 
 High performance sorting algorithms have always been in demand so that computers may
 process data more quickly. Since the computer has become a vital tool in various domains
