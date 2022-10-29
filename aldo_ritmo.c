@@ -618,7 +618,7 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 			}
 			push_to_b(stack_a, stack_b);
 		}
-		else 
+		else  ////calcolare quanto costa il movimento in di entrambi numeri in a (hlf, hls)compresi i  movimenti in b
 		{
 			sec = shiva(&temp, stack_a, stack_b);
 			//printf("stackb = %d, SEC = %d  HLS = %d\n", stack_b->stack[0], sec, stack_a->hls);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/19 16:53:46 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/29 19:17:47 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	*loader_int(char **argv, t_stack *stack_a, int i, int c)
 		i++;
 	}
 	return (0);
-	free(stack_a);
 }
 
 int	init_struct(t_stack *stack_a, t_stack *stack_b)
@@ -57,9 +56,11 @@ void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 		four_guys(stack_a, stack_b);
 	else if (stack_a->size == 5)
 		five_guys(stack_a, stack_b);
+	else
+		sort(stack_a, stack_b);
 	//print_st(&stack_a);
 	print_st(stack_a);
-	print_st(stack_b);
+	// print_st(stack_b);
 }
 
 void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
@@ -79,10 +80,11 @@ void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 		four_guys(stack_a, stack_b);
 	else if (stack_a->size == 5)
 		five_guys(stack_a, stack_b);
+	else
+		sort(stack_a, stack_b);
 	// print_st(stack_a);
 	// print_st(stack_a);
 	//sortea(stack_a, stack_b);
-	sort(stack_a, stack_b);
 	//sortc(stack_a, stack_b);
 	// print_st(stack_b);
 }
