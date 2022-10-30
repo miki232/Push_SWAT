@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:06:16 by mardolin          #+#    #+#             */
-/*   Updated: 2022/10/19 16:38:05 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/30 13:57:24 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ typedef	struct s_stack
 	int		mv_first;
 	int		mv_second;
 	int		j;
+	int		sec;
+	int		i;
+	int		c;
+	int		*temp;
+
 }			t_stack;
 
 typedef	struct s_chunk
@@ -43,16 +48,16 @@ typedef	struct s_chunk
 	int		*cnk_5;
 }		t_chunk;
 
-void	sortc(t_stack *stack_a, t_stack *stack_b);
+void		sortc(t_stack *stack_a, t_stack *stack_b);
 char		**ft_split(const char *s, char c);
 int			get_word(const char *s, char c);
 char		*ft_substr(const char *s, int start, int len);
 char		*ft_strdup(const char *s);
 int			ft_strlen(char *str);
-void	min_max_val(t_stack *s);
-void	secondmin(t_stack *s);
-int	**init(int **chunk, t_stack *stack_a, t_stack *temp);
-void	sort(t_stack *stack_a, t_stack *stack_b);
+void		min_max_val(t_stack *s);
+void		secondmin(t_stack *s);
+int			**init(int **chunk, t_stack *stack_a, t_stack *temp);
+void		sort(t_stack *stack_a, t_stack *stack_b);
 int			ft_atoi(const char *str);
 void		ft_ordered(t_stack *stack_a);
 void		ft_equals(t_stack *stack_a);
@@ -79,9 +84,21 @@ void		min_val(t_stack *stack);
 void		five_guys(t_stack *stack, t_stack *stack_b);
 void		print_st(t_stack *stack);
 void		four_guys(t_stack *stack_a, t_stack *stack_b);
-int 		init_struct(t_stack *stack_a, t_stack *stack_b);
-void 		checker_one(t_stack *stack_a, t_stack *stack_b,char **argv);
-void 		checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
+int			init_struct(t_stack *stack_a, t_stack *stack_b);
+void		checker_one(t_stack *stack_a, t_stack *stack_b,char **argv);
+void		checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
 void		sortea(t_stack *stack_a, t_stack *stack_b);
+// void		f_ra_rb(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
+// void		f(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
+// void		f_rev(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
+// void		g(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
+// int 		mov_push(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
+int			h(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
+int 		size(t_stack *stack_a, t_stack *stack_b);
+int 		base_moves(t_stack *stack_a, t_stack *stack_b);
+int 		init_temp(t_stack *temp);
+int 		check_first(int **chunk, t_stack *temp);
+int 		check_second(int **chunk, t_stack *temp);
+int 		check_chunk(int **chunk, t_stack *temp);
 
 #endif

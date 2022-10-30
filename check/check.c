@@ -6,13 +6,13 @@
 /*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:14:31 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/29 17:50:28 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/29 16:36:17 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "checker.h"
 
-void	ft_ordered(t_stack *stack_a)
+int	ft_ordered(t_stack *stack_a)
 {
 	int	i;
 	int	j;
@@ -25,10 +25,10 @@ void	ft_ordered(t_stack *stack_a)
 		j++;
 		if ((i + 1) == (stack_a->size))
 		{
-			printf("Ordered");
-			exit(0);
+			return (1);
 		}
 	}
+	return (0);
 }
 
 void	ft_equals(t_stack *stack_a)
