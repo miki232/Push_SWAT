@@ -6,7 +6,7 @@
 #    By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 18:25:59 by mtoia             #+#    #+#              #
-#    Updated: 2022/10/30 14:48:02 by mardolin         ###   ########.fr        #
+#    Updated: 2022/10/30 15:46:44 by mardolin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ IND = 0
 PER = 0
 
 SRC = main.c utils.c split.c check.c push_moves.c rev_rot_moves.c rotate_moves.c \
-		swap_moves.c aldo_ritmo.c small_sort.c check_chunk.c moves.c utils_sort.c
+		swap_moves.c aldo_ritmo.c small_sort.c check_chunk.c moves.c utils_sort.c \
+		cin.c
 
 HDRS = /
 

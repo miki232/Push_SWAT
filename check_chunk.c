@@ -6,7 +6,7 @@
 /*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:40:26 by mardolin          #+#    #+#             */
-/*   Updated: 2022/10/30 14:56:38 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/10/30 15:32:21 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	check_second(int **chunk, t_stack *temp)
 	}
 	temp->i++;
 	temp->j--;
-	return (0);
+	return (1);
 }
 
 int	check_chunk(int **chunk, t_stack *temp)

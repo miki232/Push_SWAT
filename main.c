@@ -6,7 +6,7 @@
 /*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/30 14:51:06 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/10/30 16:50:39 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@ int	init_temp(t_stack *temp)
 	return (0);
 }
 
+int	init_temp_c(t_stack *temp)
+{
+	temp->j = 44;
+	temp->i = 0;
+	temp->c = 10;
+	return (0);
+}
+
 void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 {
 	char	**arg;
@@ -52,9 +60,12 @@ void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 		four_guys(stack_a, stack_b);
 	else if (stack_a->size == 5)
 		five_guys(stack_a, stack_b);
-	else
-		sort(stack_a, stack_b, &temp);
-	print_st(stack_a);
+	// else if (stack_a->size <= 100)
+	// 	sort(stack_a, stack_b, &temp);
+	else 
+		sortc(stack_a, stack_b, &temp);
+	// print_st(stack_a);
+	// print_st(stack_b);
 }
 
 void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
@@ -76,8 +87,12 @@ void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 		four_guys(stack_a, stack_b);
 	else if (stack_a->size == 5)
 		five_guys(stack_a, stack_b);
-	else
-		sort(stack_a, stack_b, &temp);
+	// else if (stack_a->size <= 100)
+	// 	sort(stack_a, stack_b, &temp);
+	else 
+		sortc(stack_a, stack_b, &temp);
+	// print_st(stack_a);
+	// print_st(stack_b);
 }
 
 int	main(int argc, char **argv)
