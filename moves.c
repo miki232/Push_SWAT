@@ -3,180 +3,96 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 11:30:03 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/16 17:21:08 by mtoia            ###   ########.fr       */
+/*   Created: 2022/10/30 14:45:50 by mardolin          #+#    #+#             */
+/*   Updated: 2022/10/30 15:00:00 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-int		*do_swap(t_stack *stack)
+int	moves_for_first(t_stack *stack_a)
 {
-	int	temp;
 	int	i;
 
-	temp = 0;
 	i = 0;
-	while (i < 2)
+	while (stack_a->stack[i] != stack_a->hlf)
+		i++;
+	return (i);
+}
+
+int	moves_for_second(t_stack *stack_a)
+{
+	int	c;
+
+	c = stack_a->size - 1;
+	while (stack_a->stack[c] != stack_a->hls
+		|| stack_a->stack[c] == stack_a->hls)
 	{
-		temp = stack->stack[i + 1];
-		i++;
-		stack->stack[i] = stack->stack[i - 1];
-		stack->stack[i - 1] = temp;
-		i++;
-	} 
-	return (0);
-}
-
-void	swap_a(t_stack *stack_a)
-{
-	do_swap(stack_a);
-	printf("sa\n");
-}
-
-void	swap_b(t_stack *stack_b)
-{
-	do_swap(stack_b);
-	printf("sb\n");
-}
-
-void	swap_a_b(t_stack *stack_a, t_stack *stack_b)
-{
-	do_swap(stack_a);
-	do_swap(stack_b);
-	printf("ss\n");
-}
-
-int		push_to(t_stack *dest, t_stack *src)
-{
-	int *temp;
-	int i;
-	
-	temp = malloc(sizeof(int) * dest->size);
-	i = 0;
-	if (src == NULL)
-		return (0);
-	//printf("ok");
-	while(i < dest->size)
-	{
-		temp[i] = dest->stack[i];
-		//printf("%d\n", temp[i]);
-		i++;
+		if (stack_a->stack[c] == stack_a->hls)
+		{
+			break ;
+		}
+		c--;
 	}
-	dest->stack[0] = src->stack[0];
-	i = 0;
-	while(i <= dest->size)
-	{
-		dest->stack[i + 1] = temp[i];
-		//printf("%d %d\n", dest->stack[i], i);
-		i++;
-	}
-	i = 0;
-	while (i < src->size)
-	{
-		src->stack[i] = src->stack[i + 1];
-		i++;
-	}
-	free(temp);
-	return (0);
+	return (c);
 }
 
-void	push_to_a(t_stack *stack_a, t_stack *stack_b)
+int	mov_push(t_stack *stack_a, t_stack *stack_b, t_stack *temp)
+{
+	stack_a->sec = shiva(temp, stack_a, stack_b);
+	while (stack_b->stack[0] != stack_a->sec)
+	{
+		moves_count_min_max(stack_b, stack_a->sec);
+		if (stack_b->i_min > (stack_b->size / 2))
+			rev_rb(stack_b);
+		else
+			rotate_b(stack_b);
+	}
+	push_to_b(stack_a, stack_b);
+	return (1);
+}
+
+int	mov_stack_b(t_stack *stack_a, t_stack *stack_b, t_stack *temp)
 {
 	if (stack_b->size < 1)
-		return ;
-	push_to(stack_a, stack_b);
-	stack_a->size += 1;
-	stack_b->size -= 1;
-	//printf("a=%d b=%d\n", stack_a->size, stack_b->size);
-	printf("pa\n");
-}
-
-void	push_to_b(t_stack *stack_a, t_stack *stack_b)
-{
-	if (stack_a->size < 1)
-		return ;
-	push_to(stack_b, stack_a);
-	stack_a->size -= 1;
-	stack_b->size += 1;
-	//printf("a=%d b=%d\n", stack_a->size, stack_b->size);
-	printf("pb\n");
-}
-
-void	rotate(t_stack *stack)
-{
-	int temp;
-	int i;
-	
-	i = 0;
-	temp = stack->stack[0];
-	while (i < stack->size)
+		push_to_b(stack_a, stack_b);
+	else if (stack_a->stack[0] < stack_b->min
+		|| stack_a->stack[0] > stack_b->max)
 	{
-		stack->stack[i] = stack->stack[i + 1];
-		i++;
+		while (stack_b->stack[0] != stack_b->max)
+		{
+			moves_count_min_max(stack_b, stack_b->max);
+			if (stack_b->i_min > (stack_b->size / 2))
+				rev_rb(stack_b);
+			else
+				rotate_b(stack_b);
+		}
+		push_to_b(stack_a, stack_b);
 	}
-	stack->stack[i - 1] = temp;
+	else
+		mov_push(stack_a, stack_b, temp);
+	return (1);
 }
 
-void	rotate_a(t_stack *stack_a)
+int	base_moves(t_stack *stack_a, t_stack *stack_b)
 {
-	rotate(stack_a);
-	printf("ra\n");
-}
-
-void	rotate_b(t_stack *stack_b)
-{
-	rotate(stack_b);
-	printf("rb\n");
-}
-
-void	ra_rb(t_stack *stack_a, t_stack *stack_b)
-{
-	rotate(stack_a);
-	rotate(stack_b);
-	printf("rr\n");
-}
-
-void	reverse_rotate(t_stack *stack)
-{
-	int *temp;
-	int i;
-	
-	i = 0;
-	//temp = stack->stack[stack->size - 1];
-	temp = malloc(sizeof(int) * stack->size);
-	while (i < stack->size)
+	if ((stack_a->size - stack_a->c) > stack_a->i)
 	{
-		temp[i] = stack->stack[i];
-		i++;
+		while (stack_a->i > 0)
+		{
+			rotate_a(stack_a);
+			stack_a->i--;
+		}
 	}
-	i = 0;
-	while (i < stack->size)
+	else
 	{
-		stack->stack[i + 1] = temp[i];
-		i++;
+		while (stack_a->c < stack_a->size)
+		{
+			rev_ra(stack_a);
+			stack_a->c++;
+		}	
 	}
-	stack->stack[0] = temp[stack->size - 1];
-	free(temp);
-}
-
-void	rev_ra(t_stack *stack_a)
-{
-	reverse_rotate(stack_a);
-	printf("rra\n");
-}
-
-void	rev_rb(t_stack *stack_b)
-{
-	reverse_rotate(stack_b);
-	printf("rrb\n");
-}
-
-void	rev_ra_rb(t_stack *stack_a, t_stack *stack_b)
-{
-	reverse_rotate(stack_b);
-	reverse_rotate(stack_a);
-	printf("rrr\n");
+	return (1);
 }

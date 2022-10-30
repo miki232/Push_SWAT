@@ -6,7 +6,7 @@
 /*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:06:16 by mardolin          #+#    #+#             */
-/*   Updated: 2022/10/30 13:57:24 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/10/30 14:49:55 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef	struct s_stack
 	int		i;
 	int		c;
 	int		*temp;
+	int		**cn;
 
 }			t_stack;
 
@@ -57,7 +58,7 @@ int			ft_strlen(char *str);
 void		min_max_val(t_stack *s);
 void		secondmin(t_stack *s);
 int			**init(int **chunk, t_stack *stack_a, t_stack *temp);
-void		sort(t_stack *stack_a, t_stack *stack_b);
+void		sort(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
 int			ft_atoi(const char *str);
 void		ft_ordered(t_stack *stack_a);
 void		ft_equals(t_stack *stack_a);
@@ -88,17 +89,17 @@ int			init_struct(t_stack *stack_a, t_stack *stack_b);
 void		checker_one(t_stack *stack_a, t_stack *stack_b,char **argv);
 void		checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
 void		sortea(t_stack *stack_a, t_stack *stack_b);
-// void		f_ra_rb(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
-// void		f(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
-// void		f_rev(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
-// void		g(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
-// int 		mov_push(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
-int			h(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
+int			mov_stack_b(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
 int 		size(t_stack *stack_a, t_stack *stack_b);
 int 		base_moves(t_stack *stack_a, t_stack *stack_b);
 int 		init_temp(t_stack *temp);
 int 		check_first(int **chunk, t_stack *temp);
 int 		check_second(int **chunk, t_stack *temp);
 int 		check_chunk(int **chunk, t_stack *temp);
+void		moves_count_min_max(t_stack *stack, int num);
+int			shiva(t_stack *temp, t_stack *stack_a, t_stack *stack_b);
+int			moves_for_first(t_stack *stack_a);
+int			moves_for_second(t_stack *stack_a);
+int			*loader_int(char **argv, t_stack *stack_a, int i, int c);
 
 #endif

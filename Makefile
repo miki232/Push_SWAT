@@ -6,7 +6,7 @@
 #    By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 18:25:59 by mtoia             #+#    #+#              #
-#    Updated: 2022/10/30 10:43:53 by mardolin         ###   ########.fr        #
+#    Updated: 2022/10/30 14:48:02 by mardolin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ C_END = \033[0m
 IND = 0
 PER = 0
 
-SRC = main.c utils.c split.c check.c push_moves.c rev_rot_moves.c rotate_moves.c swap_moves.c aldo_ritmo.c
+SRC = main.c utils.c split.c check.c push_moves.c rev_rot_moves.c rotate_moves.c \
+		swap_moves.c aldo_ritmo.c small_sort.c check_chunk.c moves.c utils_sort.c
 
 HDRS = /
 
@@ -53,8 +54,6 @@ clean:
 
 fclean:
 	@rm -f $(NAME) $(OBJ)
-	make fclean -C check/
-	@test -f checker && rm checker
 	@echo "$(C_LGRN)➜ [$(NAME)] Program has been Cleared Successfully !$(C_END)"
 
 norme:
