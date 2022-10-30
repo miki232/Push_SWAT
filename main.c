@@ -6,27 +6,11 @@
 /*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/29 19:17:47 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/30 16:51:44 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
-
-int	*loader_int(char **argv, t_stack *stack_a, int i, int c)
-{
-	stack_a->stack = malloc(sizeof(int) * (stack_a->size));
-	if (!stack_a->stack)
-		return (0);
-	while (i < stack_a->size + c)
-	{
-		if (c)
-			stack_a->stack[i - 1] = ft_atoi(argv[i]);
-		else
-			stack_a->stack[i] = ft_atoi(argv[i]);
-		i++;
-	}
-	return (0);
-}
 
 int	init_struct(t_stack *stack_a, t_stack *stack_b)
 {
@@ -34,14 +18,26 @@ int	init_struct(t_stack *stack_a, t_stack *stack_b)
 	stack_b->size = 0;
 	stack_a->id = 'a';
 	stack_b->id = 'b';
-	// stack_b->stack[0] = 4;
 	stack_b->size = 0;
+	stack_a->sec = 0;
+	stack_a->i = 0;
+	stack_a->c = 0;
+	stack_a->j = 0;
+	return (0);
+}
+
+int	init_temp(t_stack *temp)
+{
+	temp->j = 19;
+	temp->i = 0;
+	temp->c = 4;
 	return (0);
 }
 
 void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 {
 	char	**arg;
+	t_stack	temp;
 
 	init_struct(stack_a, stack_b);
 	arg = ft_split(argv[1], ' ');
@@ -57,14 +53,14 @@ void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 	else if (stack_a->size == 5)
 		five_guys(stack_a, stack_b);
 	else
-		sort(stack_a, stack_b);
-	//print_st(&stack_a);
+		sortc(stack_a, stack_b, &temp);
 	print_st(stack_a);
-	// print_st(stack_b);
 }
 
 void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 {
+	t_stack	temp;
+
 	init_struct(stack_a, stack_b);
 	check_dig(argv);
 	stack_a->size = argc - 1;
@@ -81,19 +77,14 @@ void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 	else if (stack_a->size == 5)
 		five_guys(stack_a, stack_b);
 	else
-		sort(stack_a, stack_b);
-	// print_st(stack_a);
-	// print_st(stack_a);
-	//sortea(stack_a, stack_b);
-	//sortc(stack_a, stack_b);
-	// print_st(stack_b);
+		sort(stack_a, stack_b, &temp);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	stack_a;
 	t_stack	stack_b;
-	
+
 	if (argc < 2)
 	{
 		printf("ERROR\n");
@@ -103,7 +94,4 @@ int	main(int argc, char **argv)
 		checker_one(&stack_a, &stack_b, argv);
 	else
 		checker_two(&stack_a, &stack_b, argc, argv);
-	//print_st(&stack_a);
-	// free(&stack_a);
-	// free(&stack_b);
 }

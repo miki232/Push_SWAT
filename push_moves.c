@@ -6,7 +6,7 @@
 /*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 11:39:12 by blackronos        #+#    #+#             */
-/*   Updated: 2022/10/17 15:22:11 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/10/30 13:57:55 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,29 @@
 
 int	push_to(t_stack *dest, t_stack *src)
 {
-	int	*temp;
-	int	i;
-
-	temp = malloc(sizeof(int) * dest->size);
-	i = 0;
+	dest->i = 0;
+	dest->temp = malloc(sizeof(int) * dest->size);
 	if (src == NULL)
 		return (0);
-	while (i < dest->size)
+	while (dest->i < dest->size)
 	{
-		temp[i] = dest->stack[i];
-		i++;
+		dest->temp[dest->i] = dest->stack[dest->i];
+		dest->i++;
 	}
 	dest->stack[0] = src->stack[0];
-	i = 0;
-	while (i <= dest->size)
+	dest->i = 0;
+	while (dest->i <= dest->size)
 	{
-		dest->stack[i + 1] = temp[i];
-		i++;
+		dest->stack[dest->i + 1] = dest->temp[dest->i];
+		dest->i++;
 	}
-	i = 0;
-	while (i < src->size)
+	dest->i = 0;
+	while (dest->i < src->size)
 	{
-		src->stack[i] = src->stack[i + 1];
-		i++;
+		src->stack[dest->i] = src->stack[dest->i + 1];
+		dest->i++;
 	}
-	free(temp);
+	free(dest->temp);
 	return (0);
 }
 
