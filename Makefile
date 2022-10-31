@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+         #
+#    By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 18:25:59 by mtoia             #+#    #+#              #
-#    Updated: 2022/10/31 14:13:44 by mtoia            ###   ########.fr        #
+#    Updated: 2022/10/31 15:59:57 by mardolin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,11 @@ PER = 0
 
 SRC = main.c utils.c split.c check.c push_moves.c rev_rot_moves.c rotate_moves.c \
 		swap_moves.c aldo_ritmo.c small_sort.c check_chunk.c moves.c utils_sort.c \
-		cin.c
+		cin.c utils_cin.c chunk_cin.c 
 HDRS = /
 
 
 OBJ = $(SRC:.c=.o)
-
 
 
 CC = gcc

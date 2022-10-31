@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:14:31 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/29 17:50:28 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/31 14:51:43 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,23 @@ int	ft_space(char *arg)
 		i++;
 	}
 	return (0);
+}
+
+int	ordered_int(t_stack *stack)
+{
+	int	i;
+	int	j;
+
+	j = 1;
+	i = 0;
+	while (stack->stack[i] < stack->stack[j])
+	{
+		i++;
+		j++;
+		if ((i + 1) == (stack->size))
+		{
+			return (0);
+		}
+	}
+	return (1);
 }

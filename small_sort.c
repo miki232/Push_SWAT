@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:39:25 by mardolin          #+#    #+#             */
-/*   Updated: 2022/10/31 14:20:00 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/31 15:22:28 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,33 +74,6 @@ void	min_max_val(t_stack *s)
 	}
 }
 
-int	ordered_int(t_stack *stack)
-{
-	int	i;
-	int	j;
-
-	j = 1;
-	i = 0;
-	while (stack->stack[i] < stack->stack[j])
-	{
-		i++;
-		j++;
-		if ((i + 1) == (stack->size))
-		{
-			return (0);
-		}
-	}
-	return (1);
-}
-
-int	check_stack(t_stack *stack)
-{
-	if (stack->size > 0)
-		return (1);
-	return (0);
-}
-
-
 void	four_guys(t_stack *stack_a, t_stack *stack_b)
 {
 	min_max_val(stack_a);
@@ -123,13 +96,13 @@ void	five_guys(t_stack *stack_a, t_stack *stack_b)
 		{
 			moves_count_min_max(stack_a, stack_a->min);
 			if (stack_a->i_min > (stack_a->size / 2))
-				rev_ra(stack_a);			
+				rev_ra(stack_a);
 			else
 				rotate_a(stack_a);
 		}
 		if (!ordered_int(stack_a))
 		{
-			break; ;
+			break ;
 		}
 		if (stack_a->stack[0] == stack_a->min)
 		{
@@ -138,8 +111,4 @@ void	five_guys(t_stack *stack_a, t_stack *stack_b)
 		i++;
 	}
 	three_guys(stack_a);
-	// while (stack_b->size > 0 && stack_b->size < 2)
-	// {
-	// 	push_to_a(stack_a, stack_b);
-	// }
 }

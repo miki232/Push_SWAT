@@ -6,7 +6,7 @@
 /*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:06:16 by mardolin          #+#    #+#             */
-/*   Updated: 2022/10/30 15:58:20 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/10/31 17:01:56 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,17 @@ void		sortc(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
 void		hold_first_num(t_stack *stack_a, int **cn, int j);
 void		hold_second_num(t_stack *stack_a, int **cn, int j);
 void		checkss(t_stack *stack_a, t_stack *temp);
-
+int			ordered_int(t_stack *stack);
+int			check_chunk_cc(int **chunk, t_stack *temp);
+void		moves_count_min_max_cin(t_stack *stack, int num);
+int			check_frst(int **chunk, t_stack *temp);
+int			check_sec(int **chunk, t_stack *temp);
+int			check_thr(int **chunk, t_stack *temp);
+int			check_frt(int **chunk, t_stack *temp);
+int			check_fv(int **chunk, t_stack *temp);
+int			**init_cin(int **chunk, t_stack *stack_a, t_stack *temp);
+int			shiva_cin(t_stack *temp, t_stack *stack_a, t_stack *stack_b);
+int			chunk_index_increment(t_stack *stack_b);
+int			mov_stack_b_cin(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
+void	printcn(int **chunk, int c);
 #endif
