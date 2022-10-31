@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+         #
+#    By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 18:25:59 by mtoia             #+#    #+#              #
-#    Updated: 2022/10/17 15:08:31 by mardolin         ###   ########.fr        #
+#    Updated: 2022/10/31 16:24:16 by mtoia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,14 +24,14 @@ C_END = \033[0m
 IND = 0
 PER = 0
 
-SRC = main.c utils.c split.c check.c push_moves.c rev_rot_moves.c rotate_moves.c swap_moves.c cin.c
+SRC = main.c utils.c split.c check.c push_moves.c rev_rot_moves.c rotate_moves.c swap_moves.c aldo_ritmo.c lis.c
 
 HDRS = /
 
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
-CFLAGS =
+CFLAGS = -g
 
 %.o: %.c 
 	@$(CC) $(CFLAGS) -I {HDRS} -c $< -o $@

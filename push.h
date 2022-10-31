@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:06:16 by mardolin          #+#    #+#             */
-/*   Updated: 2022/10/19 16:38:05 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/31 16:33:19 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef	struct s_chunk
 	int		*cnk_5;
 }		t_chunk;
 
+int	*ft_define_lis(int *dst, int size, int *max);
 void	sortc(t_stack *stack_a, t_stack *stack_b);
 char		**ft_split(const char *s, char c);
 int			get_word(const char *s, char c);

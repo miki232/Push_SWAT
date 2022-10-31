@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/19 16:53:46 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/31 19:07:04 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,61 @@ void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 	stack_b->stack = malloc(sizeof(int) * stack_a->size);
 	ft_equals(stack_a);
 	ft_ordered(stack_a);
+	print_st(stack_a);
 	if (stack_a->size == 3)
 		three_guys(stack_a);
 	else if (stack_a->size == 4)
 		four_guys(stack_a, stack_b);
 	else if (stack_a->size == 5)
 		five_guys(stack_a, stack_b);
+	sort(stack_a, stack_b);
 	//print_st(&stack_a);
+	print_st(stack_b);
+}
+
+int	islis(int num, int *arr, int i)
+{
+	while ((num != arr[i] || num == arr[i]) && i >= 0)
+	{
+		if (num == arr[i])
+		{
+			return (0);
+		}
+		i--;
+	}
+	
+	return (1);
+}
+
+void	mmove(t_stack *stack_a, t_stack *stack_b, int *arr, int i)
+{
+	int j;
+	int	k;
+
+	i -= 1;
+	k = i;
+	j = stack_a->size - 1;
+	while (j >= 0)
+	{
+		
+		if ((stack_a->stack[0] != arr[i]))
+			rotate_a(stack_a);
+		while ((i >= 0 && stack_a->stack[0] != arr[i]) || stack_a->stack[0] == arr[i])
+		{
+			printf("%d stack%d\n", arr[i], stack_a->stack[j]);
+			if (stack_a->stack[0] == arr[i])
+			{
+				push_to_b(stack_a, stack_b);
+				i = k;
+				j = stack_a->size;
+				break;
+			}
+			i--;
+		}
+		i = k;
+		j--;
+	}
+
 	print_st(stack_a);
 	print_st(stack_b);
 }
@@ -69,6 +117,10 @@ void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 	stack_a->size = argc - 1;
 	stack_a->k = 0;
 	stack_b->k = 0;
+	int *arr;
+	int i;
+	i = 0;
+	arr = malloc(sizeof(int) * stack_a->size);
 	stack_b->stack = malloc(sizeof(int) * stack_a->size);
 	loader_int(argv, stack_a, 1, 1);
 	ft_equals(stack_a);
@@ -82,8 +134,12 @@ void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 	// print_st(stack_a);
 	// print_st(stack_a);
 	//sortea(stack_a, stack_b);
+	arr = ft_define_lis(stack_a->stack, stack_a->size, &i);
+	mmove(stack_a, stack_b, arr, i);
+	
+		
 	//sort(stack_a, stack_b);
-	sortc(stack_a, stack_b);
+	//sortc(stack_a, stack_b);
 	// print_st(stack_b);
 }
 
@@ -101,7 +157,7 @@ int	main(int argc, char **argv)
 		checker_one(&stack_a, &stack_b, argv);
 	else
 		checker_two(&stack_a, &stack_b, argc, argv);
-	print_st(&stack_a);
+	//print_st(&stack_a);
 	// free(&stack_a);
 	// free(&stack_b);
 }

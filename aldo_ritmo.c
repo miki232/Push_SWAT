@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aldo_ritmo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:32:58 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/19 18:48:58 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/10/31 13:26:06 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -270,10 +270,21 @@ void	checkss(t_stack *stack_a, t_stack *temp)
 	}
 }
 
+void	printcn(int **chunk, int c)
+{
+	int	i = 0;
+	while (i < 20)
+	{
+		printf("Al chunck[%d][%d] = %d \n", c, i, chunk[c][i]);
+		i++;
+	}
+	
+}
+
 int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 {
 	int	i = 0;
-	int	j = 0;
+	int	j = 19;
 	
 
 	temp->id = 't';
@@ -288,7 +299,7 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 	checkss(stack_a, temp);
 	i = 0;
 	//print_st(&temp);
-	int c = 0;
+	int c = 4;
 	while (i < 100)
 	{
 		if (i < 20)
@@ -297,8 +308,8 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 		{
 			if(i == 20)
 			{
-				j = 0;
-				c++;
+				j = 19;
+				c--;
 			}
 			chunk[c][j] = temp->stack[i];
 			//printf("c%d\n", j);
@@ -307,8 +318,8 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 		{
 			if(i == 40)
 			{
-				j = 0;
-				c++;
+				j = 19;
+				c--;
 			}
 			chunk[c][j] = temp->stack[i];
 		}
@@ -316,8 +327,8 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 		{
 			if(i == 60)
 			{
-				j = 0;
-				c++;
+				j = 19;
+				c--;
 			}
 			chunk[c][j] = temp->stack[i];
 		}
@@ -325,14 +336,15 @@ int	**init(int **chunk, t_stack *stack_a, t_stack *temp)
 		{
 			if(i == 80)
 			{
-				j = 0;
-				c++;
+				j = 19;
+				c--;
 			}
 			chunk[c][j] = temp->stack[i];
 		}
 		i++;
-		j++;
+		j--;
 	}
+	//printcn(chunk, 4);
 	return (chunk);
 
 }
@@ -376,17 +388,17 @@ int	shiva(t_stack *temp, t_stack *stack_a, t_stack *stack_b)
 	int	c;
 
 	c = stack_b->size - 1;
-	i = 0;
+	i = 99;
 	while (temp->stack[i] != stack_a->stack[0])
-		i++;
+		i--;
 	while (c >= 0)
 	{
-		if (stack_b->stack[c] == temp->stack[i + 1])
+		if (stack_b->stack[c] == temp->stack[i - 1])
 			return (stack_b->stack[c]);
 		else if (c == 0)
 		{
 			c = stack_b->size;
-			i++;
+			i--;
 		}
 		c--;
 	}
@@ -481,6 +493,7 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	min_max_val(stack_a);
 	cn = malloc(sizeof(int **) * 5);
 	cn = init(cn, stack_a, &temp);
+	
 	i = 0;
 	while (stack_a->size > (0))
 	{
@@ -489,25 +502,7 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 		i = moves_for_first(stack_a);
 		c = moves_for_second(stack_a);
 		if ((stack_a->size - c) > i)
-		{	
-			// if ((i > stack_a->size / 2) && stack_b->i_min > (stack_b->size / 2))
-			// {
-			// 	while (stack_b->stack[0] != stack_b->min && stack_a->stack[0] != stack_a->hlf)
-			// 	{
-			// 		//printf("okkkkkkkk\n");
-			// 		rev_ra_rb(stack_a, stack_b);
-			// 	}
-			// }
-			// i = moves_for_first(stack_a);
-			// if ((i < stack_a->size / 2) && stack_b->i_min < (stack_b->size / 2))
-			// {
-			// 	while (stack_b->stack[0] != stack_b->min && stack_a->stack[0] != stack_a->hlf)
-			// 	{
-			// 		//printf("okkkkkkkk\n");
-			// 		ra_rb(stack_a, stack_b);
-			// 	}
-			// }
-			// i = moves_for_first(stack_a);
+		{
 			while (i > 0)
 			{
 				rotate_a(stack_a);
@@ -527,9 +522,9 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 			push_to_b(stack_a, stack_b);
 		else if (stack_a->stack[0] < stack_b->min || stack_a->stack[0] > stack_b->max)
 		{
-			while (stack_b->stack[0] != stack_b->min)
+			while (stack_b->stack[0] != stack_b->max)
 			{
-				moves_count_min_max(stack_b, stack_b->min);
+				moves_count_min_max(stack_b, stack_b->max);
 				if (stack_b->i_min > (stack_b->size / 2))
 					rev_rb(stack_b);
 				else
@@ -566,14 +561,23 @@ void	sort(t_stack *stack_a, t_stack *stack_b)
 	{
 		rotate_b(stack_b);
 	}
-	if (stack_b->stack[0] == stack_b->max)
+	while (stack_b->stack[0] == stack_b->max && stack_b->size > 0)
 	{
 		push_to_a(stack_a, stack_b);
+		min_max_val(stack_b);
 	}
-	while (stack_b->size > 0)
-	{
-		rev_rb(stack_b);
-		push_to_a(stack_a, stack_b);
-	}
+	// while (stack_b->stack[0] != stack_b->max)
+	// {
+	// 	rotate_b(stack_b);
+	// }
+	// if (stack_b->stack[0] == stack_b->max)
+	// {
+	// 	push_to_a(stack_a, stack_b);
+	// }
+	// while (stack_b->size > 0)
+	// {
+	// 	rev_rb(stack_b);
+	// 	push_to_a(stack_a, stack_b);
+	// }
 	print_st(stack_a);	
 }
