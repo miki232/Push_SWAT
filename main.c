@@ -3,31 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/17 16:38:46 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/10/31 14:14:10 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
-
-int	*loader_int(char **argv, t_stack *stack_a, int i, int c)
-{
-	stack_a->stack = malloc(sizeof(int) * (stack_a->size));
-	if (!stack_a->stack)
-		return (0);
-	while (i < stack_a->size + c)
-	{
-		if (c)
-			stack_a->stack[i - 1] = ft_atoi(argv[i]);
-		else
-			stack_a->stack[i] = ft_atoi(argv[i]);
-		i++;
-	}
-	return (0);
-	free(stack_a);
-}
 
 int	init_struct(t_stack *stack_a, t_stack *stack_b)
 {
@@ -35,14 +18,34 @@ int	init_struct(t_stack *stack_a, t_stack *stack_b)
 	stack_b->size = 0;
 	stack_a->id = 'a';
 	stack_b->id = 'b';
-	// stack_b->stack[0] = 4;
 	stack_b->size = 0;
+	stack_a->sec = 0;
+	stack_a->i = 0;
+	stack_a->c = 0;
+	stack_a->j = 0;
+	return (0);
+}
+
+int	init_temp(t_stack *temp)
+{
+	temp->j = 19;
+	temp->i = 0;
+	temp->c = 4;
+	return (0);
+}
+
+int	init_temp_c(t_stack *temp)
+{
+	temp->j = 44;
+	temp->i = 0;
+	temp->c = 10;
 	return (0);
 }
 
 void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 {
 	char	**arg;
+	t_stack	temp;
 
 	init_struct(stack_a, stack_b);
 	arg = ft_split(argv[1], ' ');
@@ -57,16 +60,23 @@ void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 		four_guys(stack_a, stack_b);
 	else if (stack_a->size == 5)
 		five_guys(stack_a, stack_b);
-	//print_st(&stack_a);
-	print_st(stack_a);
-	print_st(stack_b);
+	else if (stack_a->size == 500)
+		sortc(stack_a, stack_b, &temp);
+	else if (stack_a->size == 100)
+		sort(stack_a, stack_b, &temp);
+	// print_st(stack_a);
+	// print_st(stack_b);
 }
 
 void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 {
+	t_stack	temp;
+
 	init_struct(stack_a, stack_b);
 	check_dig(argv);
 	stack_a->size = argc - 1;
+	stack_a->k = 0;
+	stack_b->k = 0;
 	stack_b->stack = malloc(sizeof(int) * stack_a->size);
 	loader_int(argv, stack_a, 1, 1);
 	ft_equals(stack_a);
@@ -77,9 +87,12 @@ void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 		four_guys(stack_a, stack_b);
 	else if (stack_a->size == 5)
 		five_guys(stack_a, stack_b);
-	//print_st(&stack_a);
-	print_st(stack_a);
-	print_st(stack_b);
+	else if (stack_a->size == 500)
+		sortc(stack_a, stack_b, &temp);
+	else if (stack_a->size == 100)
+		sort(stack_a, stack_b, &temp);
+	// print_st(stack_a);
+	// print_st(stack_b);
 }
 
 int	main(int argc, char **argv)
@@ -96,6 +109,4 @@ int	main(int argc, char **argv)
 		checker_one(&stack_a, &stack_b, argv);
 	else
 		checker_two(&stack_a, &stack_b, argc, argv);
-	// free(&stack_a);
-	// free(&stack_b);
 }

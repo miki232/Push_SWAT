@@ -6,77 +6,100 @@
 /*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:32:58 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/17 15:29:23 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/10/30 14:53:49 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-void	three_guys(t_stack *s)
-{
-	if (s->stack[0] > s->stack[1] && s->stack[1] < s->stack[2] \
-		&& s->stack[2] > s->stack[0])
-		swap_a(s);
-	else if (s->stack[0] < s->stack[1] && s->stack[1] > s->stack[2] \
-				&& s->stack[2] > s->stack[0])
-	{
-		swap_a(s);
-		rotate_a(s);
-	}
-	else if (s->stack[0] < s->stack[1] && s->stack[1] > s->stack[2] \
-			&& s->stack[2] < s->stack[0])
-		rev_ra(s);
-	else if (s->stack[0] > s->stack[1] && s->stack[1] > s->stack[2] \
-			&& s->stack[2] < s->stack[0])
-	{
-		rotate_a(s);
-		swap_a(s);
-	}
-	else if (s->stack[0] > s->stack[1] && s->stack[1] < s->stack[2] \
-			&& s->stack[2] < s->stack[0])
-		rotate_a(s);
-}
-
-void	min_max_val(t_stack *s)
+void	hold_first_num(t_stack *stack_a, int **cn, int j)
 {
 	int	i;
+	int	c;
+	int	s;
 
-	s->max = 0;
-	s->min = 0;
 	i = 0;
-	s->max = s->stack[0];
-	s->min = s->max;
-	while (i < s->size)
+	s = 1;
+	c = 0;
+	while (i < stack_a->size && s)
 	{
-		if (s->max < s->stack[i])
-			s->max = s->stack[i];
-		if (s->min > s->stack[i])
-			s->min = s->stack[i];
+		c = 0;
+		while (stack_a->stack[i] != cn[j][c] && c < 20)
+		{
+			c++;
+			if (stack_a->stack[i] == cn[j][c])
+			{
+				stack_a->hlf = stack_a->stack[i];
+				s = 0;
+			}
+		}
 		i++;
 	}
 }
 
-void	four_guys(t_stack *stack_a, t_stack *stack_b)
+void	hold_second_num(t_stack *stack_a, int **cn, int j)
 {
-	min_max_val(stack_a);
-	while (stack_a->stack[0] != stack_a->min)
-		rotate_a(stack_a);
-	push_to_b(stack_a, stack_b);
-	three_guys(stack_a);
-	push_to_a(stack_a, stack_b);
+	int	i;
+	int	c;
+	int	s;
+
+	c = 0;
+	s = 1;
+	i = stack_a->size - 1;
+	while (i >= 0 && s)
+	{
+		c = 0;
+		while ((stack_a->stack[i] != cn[j][c]
+			|| stack_a->stack[i] == cn[j][c]) && c < 20)
+		{
+			if (stack_a->stack[i] == cn[j][c])
+			{
+				stack_a->hls = stack_a->stack[i];
+				s = 0;
+			}
+			c++;
+		}
+		i--;
+	}
 }
 
-void	five_guys(t_stack *stack_a, t_stack *stack_b)
+int	size(t_stack *stack_a, t_stack *stack_b)
+{
+	if (stack_b->size == 20)
+		stack_a->j++;
+	if (stack_b->size == 40)
+		stack_a->j++;
+	if (stack_b->size == 60)
+		stack_a->j++;
+	if (stack_b->size == 80)
+		stack_a->j++;
+	return (1);
+}
+
+void	sort(t_stack *stack_a, t_stack *stack_b, t_stack *temp)
 {
 	min_max_val(stack_a);
-	while (stack_a->stack[0] != stack_a->max)
-		rotate_a(stack_a);
-	push_to_b(stack_a, stack_b);
-	while (stack_a->stack[0] != stack_a->min)
-		rotate_a(stack_a);
-	push_to_b(stack_a, stack_b);
-	three_guys(stack_a);
-	push_to_a(stack_a, stack_b);
-	push_to_a(stack_a, stack_b);
-	rotate_a(stack_a);
+	temp->cn = malloc(sizeof(int **) * 5);
+	temp->cn = init(temp->cn, stack_a, temp);
+	while (stack_a->size > (0))
+	{
+		hold_first_num(stack_a, temp->cn, stack_a->j);
+		hold_second_num(stack_a, temp->cn, stack_a->j);
+		stack_a->i = moves_for_first(stack_a);
+		stack_a->c = moves_for_second(stack_a);
+		base_moves(stack_a, stack_b);
+		min_max_val(stack_b);
+		mov_stack_b(stack_a, stack_b, temp);
+		size(stack_a, stack_b);
+	}
+	while (stack_b->stack[0] != stack_b->max)
+	{
+		rotate_b(stack_b);
+		min_max_val(stack_b);
+		while (stack_b->stack[0] == stack_b->max && stack_b->size > 0)
+		{
+			push_to_a(stack_a, stack_b);
+			min_max_val(stack_b);
+		}
+	}
 }
