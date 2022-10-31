@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/13 18:25:59 by mtoia             #+#    #+#              #
-#    Updated: 2022/10/31 14:13:44 by mtoia            ###   ########.fr        #
+#    Created: 2022/10/29 16:19:49 by mtoia             #+#    #+#              #
+#    Updated: 2022/10/29 18:24:23 by mtoia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = checker
 
 T_BLK = \033[5m
 T_NRM = \033[25m
@@ -24,10 +24,10 @@ C_END = \033[0m
 IND = 0
 PER = 0
 
-SRC = main.c utils.c split.c check.c push_moves.c rev_rot_moves.c rotate_moves.c \
-		swap_moves.c aldo_ritmo.c small_sort.c check_chunk.c moves.c utils_sort.c \
-		cin.c
-HDRS = /
+SRC = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c checker.c check.c utils.c \
+		push_moves.c rev_rot_moves.c rotate_moves.c swap_moves.c
+
+HDRS = checker.c
 
 
 OBJ = $(SRC:.c=.o)
@@ -54,7 +54,7 @@ clean:
 
 fclean:
 	@rm -f $(NAME) $(OBJ)
-	@make -C check/ fclean
+	@rm -f ../$(NAME)
 	@echo "$(C_LGRN)➜ [$(NAME)] Program has been Cleared Successfully !$(C_END)"
 
 norme:
@@ -65,8 +65,4 @@ re:
 	@make  $(NAME)
 	@echo "$(C_LGRN)➜ [$(NAME)] Program has been re-Compiled Successfully !$(C_END)"
 
-bonus :
-	make -C check/
-	mv check/checker .
-
-.PHONY: all clean  fclean  re bonus
+.PHONY: all clean  fclean  re 
