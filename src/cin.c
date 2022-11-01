@@ -6,7 +6,7 @@
 /*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:32:58 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/31 12:32:44 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/01 17:21:08 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,4 +221,5 @@ void	sortc(t_stack *stack_a, t_stack *stack_b, t_stack *temp)
 	cn = malloc(sizeof(int **) * 11);
 	cn = init_cin(cn, stack_a, temp);
 	endmmove(stack_a, stack_b, temp, cn);
+	
 }

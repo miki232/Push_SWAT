@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 11:30:03 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/17 15:23:14 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:35:36 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,20 @@ int	*do_swap(t_stack *stack)
 void	swap_a(t_stack *stack_a)
 {
 	do_swap(stack_a);
-	printf("sa\n");
+	ft_printf("sa\n");
 }
 
 void	swap_b(t_stack *stack_b)
 {
 	do_swap(stack_b);
-	printf("sb\n");
+	ft_printf("sb\n");
 }
 
 void	swap_a_b(t_stack *stack_a, t_stack *stack_b)
 {
 	do_swap(stack_a);
 	do_swap(stack_b);
-	printf("ss\n");
+	ft_printf("ss\n");
 }
 
 int	ordered_int(t_stack *stack)

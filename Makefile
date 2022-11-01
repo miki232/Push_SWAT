@@ -6,7 +6,7 @@
 #    By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 18:25:59 by mtoia             #+#    #+#              #
-#    Updated: 2022/10/31 14:13:44 by mtoia            ###   ########.fr        #
+#    Updated: 2022/11/01 16:49:27 by mtoia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,11 @@ C_END = \033[0m
 IND = 0
 PER = 0
 
+PRINTF = ft_printf/ft_printf.a
+
 SRC = main.c src/utils.c src/split.c src/check.c src/push_moves.c src/rev_rot_moves.c src/rotate_moves.c \
 		src/swap_moves.c src/aldo_ritmo.c src/small_sort.c src/check_chunk.c src/moves.c src/utils_sort.c \
-		src/cin.c src/helpercin.c
+		src/cin.c src/helpercin.c src/sortea.c
 
 HDRS = include/
 
@@ -40,7 +42,8 @@ CFLAGS = -Wall -Werror -Wextra
 	@printf "$(T_CLR)$(C_LYLW)➜ ➜ progress: %3d %% $(C_END)\n\033[1A$(C_END)" $(PER);
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(PRINTF)
+	@make -C ft_printf/ 
 	@echo "$(C_LGRN)➜ [$(NAME)] Program has been Compiled Successfully !$(C_END)"
 
 all: $(NAME)

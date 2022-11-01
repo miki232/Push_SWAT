@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_moves.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 11:40:18 by blackronos        #+#    #+#             */
-/*   Updated: 2022/10/17 16:20:42 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:36:05 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ void	rotate(t_stack *stack)
 void	rotate_a(t_stack *stack_a)
 {
 	rotate(stack_a);
-	printf("ra\n");
+	ft_printf("ra\n");
 }
 
 void	rotate_b(t_stack *stack_b)
 {
 	rotate(stack_b);
-	printf("rb\n");
+	ft_printf("rb\n");
 }
 
 void	ra_rb(t_stack *stack_a, t_stack *stack_b)
 {
 	rotate(stack_a);
 	rotate(stack_b);
-	printf("rr\n");
+	ft_printf("rr\n");
 }

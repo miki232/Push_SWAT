@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:06:16 by mardolin          #+#    #+#             */
-/*   Updated: 2022/10/30 15:58:20 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:48:36 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include "../ft_printf/ft_printf.h"
 
 typedef struct s_stack
 {
@@ -62,7 +63,7 @@ char	**ft_split(const char *s, char c);
 int		get_word(const char *s, char c);
 char	*ft_substr(const char *s, int start, int len);
 char	*ft_strdup(const char *s);
-int		ft_strlen(char *str);
+int		ft_strlen(const char *str);
 void	min_max_val(t_stack *s);
 void	secondmin(t_stack *s);
 int		**init(int **chunk, t_stack *stack_a, t_stack *temp);

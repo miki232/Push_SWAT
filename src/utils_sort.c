@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:42:40 by mardolin          #+#    #+#             */
-/*   Updated: 2022/10/30 15:02:26 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:52:42 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	printcn(int **chunk, int c)
 	i = 0;
 	while (i < 20)
 	{
-		printf("Al chunck[%d][%d] = %d \n", c, i, chunk[c][i]);
+		ft_printf("Al chunck[%d][%d] = %d \n", c, i, chunk[c][i]);
 		i++;
 	}
 }

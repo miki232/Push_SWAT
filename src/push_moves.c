@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 11:39:12 by blackronos        #+#    #+#             */
-/*   Updated: 2022/10/30 13:57:55 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:39:54 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	push_to_a(t_stack *stack_a, t_stack *stack_b)
 	push_to(stack_a, stack_b);
 	stack_a->size += 1;
 	stack_b->size -= 1;
-	printf("pa\n");
+	ft_printf("pa\n");
 }
 
 void	push_to_b(t_stack *stack_a, t_stack *stack_b)
@@ -57,7 +57,7 @@ void	push_to_b(t_stack *stack_a, t_stack *stack_b)
 	push_to(stack_b, stack_a);
 	stack_a->size -= 1;
 	stack_b->size += 1;
-	printf("pb\n");
+	ft_printf("pb\n");
 }
 
 void	pushing(t_stack *stack_b)

@@ -6,7 +6,7 @@
 /*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:14:31 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/29 17:50:28 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/01 16:59:38 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_ordered(t_stack *stack_a)
 		j++;
 		if ((i + 1) == (stack_a->size))
 		{
-			printf("Ordered");
+			write(2, "Error\n", 6);
 			exit(0);
 		}
 	}
@@ -44,7 +44,7 @@ void	ft_equals(t_stack *stack_a)
 		{
 			if (stack_a->stack[i] == stack_a->stack[j])
 			{
-				printf("equals\n");
+				write(2, "Error\n", 6);
 				exit(0);
 			}
 			j++;
@@ -65,7 +65,7 @@ int	isdigits(char *arg)
 			i++;
 		else
 		{
-			printf("ERROR");
+			write(2, "Error\n", 6);
 			exit(0);
 		}
 	}

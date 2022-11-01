@@ -6,7 +6,7 @@
 /*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/31 14:14:10 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/01 17:49:50 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,18 @@ int	init_temp(t_stack *temp)
 	return (0);
 }
 
+void	freearg(char **arg)
+{
+	int i;
+
+	i = 0;
+	while (arg[i])
+	{
+		free(arg[i]);
+		i++;
+	}
+}
+
 void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 {
 	char	**arg;
@@ -52,11 +64,13 @@ void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 		four_guys(stack_a, stack_b);
 	else if (stack_a->size == 5)
 		five_guys(stack_a, stack_b);
-	else if (stack_a->size == 500)
-		sortc(stack_a, stack_b, &temp);
 	else if (stack_a->size == 100)
 		sort(stack_a, stack_b, &temp);
-	print_st(stack_a);
+	else if (stack_a->size == 500)
+		sortc(stack_a, stack_b, &temp);
+	// print_st(stack_a);
+	freearg(arg);
+	//free(temp.stack);
 }
 
 void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
@@ -82,7 +96,12 @@ void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 		sortc(stack_a, stack_b, &temp);
 	else if (stack_a->size == 100)
 		sort(stack_a, stack_b, &temp);
-	print_st(stack_a);
+	// else if (stack_a->size < 300)
+	// 	sortea(stack_a, stack_b);
+	// print_st(stack_a);
+	free(temp.stack);
+	//free(arg);
+
 }
 
 int	main(int argc, char **argv)
@@ -92,11 +111,13 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 	{
-		printf("ERROR\n");
 		exit(0);
 	}
 	if (ft_space(argv[1]))
 		checker_one(&stack_a, &stack_b, argv);
 	else
 		checker_two(&stack_a, &stack_b, argc, argv);
+	free(stack_a.stack);
+	free(stack_b.stack);
+	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   aldo_ritmo.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:32:58 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/30 14:53:49 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/01 17:48:25 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,19 @@ int	size(t_stack *stack_a, t_stack *stack_b)
 	return (1);
 }
 
+void	freechunk(t_stack *temp)
+{
+	int j;
+
+	j = 4;
+	while (j >= 0)
+	{
+		free(temp->cn[j]);
+		j--;
+	}
+	
+}
+
 void	sort(t_stack *stack_a, t_stack *stack_b, t_stack *temp)
 {
 	min_max_val(stack_a);
@@ -102,4 +115,5 @@ void	sort(t_stack *stack_a, t_stack *stack_b, t_stack *temp)
 			min_max_val(stack_b);
 		}
 	}
+	freechunk(temp);
 }

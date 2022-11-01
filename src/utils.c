@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 18:23:40 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/30 13:54:45 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/01 16:52:53 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ void	print_st(t_stack *stack)
 	i = 0;
 	while (i < stack->size)
 	{
-		printf("%d ", stack->stack[i]);
+		ft_printf("%d ", stack->stack[i]);
 		i++;
 	}
-	printf(" stack_%c ha %d elementi \n----------\n", stack->id, stack->size);
+	ft_printf(" stack_%c ha %d elementi \n----------\n", stack->id, stack->size);
 }
 
 int	has_spaces(char *str)
