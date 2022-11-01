@@ -1,7 +1,7 @@
 # 42_PUSH_SWAP
 
 Da continuare a fare free
-
+https://stackoverflow.com/questions/5134891/how-do-i-use-valgrind-to-find-memory-leaks
 
 In computation, sorting is highly essential to access and manipulate data efficiently. 
 High performance sorting algorithms have always been in demand so that computers may
