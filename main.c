@@ -6,7 +6,7 @@
 /*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/31 19:07:04 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/01 18:50:41 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,35 +77,70 @@ int	islis(int num, int *arr, int i)
 	return (1);
 }
 
+void	find_spot_on_b(t_stack *stack_b, int arr)
+{
+	int j;
+
+	j = 0;
+	while (j < stack_b->size)
+	{
+		if (stack_b->stack[j] < arr && stack_b->stack[j + 1] > arr)
+		{
+			stack_b->k = 1;
+		}
+		else if (stack_b->stack[j] < arr && stack_b->stack[j + 1] < arr && stack_b->stack[j + 2] > arr)
+		{
+			stack_b->k = 3;
+		}
+		
+		
+	}
+	
+}
+
 void	mmove(t_stack *stack_a, t_stack *stack_b, int *arr, int i)
 {
 	int j;
 	int	k;
 
 	i -= 1;
-	k = i;
-	j = stack_a->size - 1;
-	while (j >= 0)
+	k = 0;
+	j = 0;
+	while (j < stack_a->size && k <= i)
 	{
-		
-		if ((stack_a->stack[0] != arr[i]))
+		if (stack_a->stack[0] != arr[k])
 			rotate_a(stack_a);
-		while ((i >= 0 && stack_a->stack[0] != arr[i]) || stack_a->stack[0] == arr[i])
+		else
 		{
-			printf("%d stack%d\n", arr[i], stack_a->stack[j]);
-			if (stack_a->stack[0] == arr[i])
-			{
-				push_to_b(stack_a, stack_b);
-				i = k;
-				j = stack_a->size;
-				break;
-			}
-			i--;
+			push_to_b(stack_a, stack_b);
+			k++;
+			j = 0;
 		}
-		i = k;
-		j--;
+		//printf("Stack[0] = %d, lis %d\n", stack_a->stack[0], arr[i]);
+		//i = k;
+		j++;
 	}
-
+	i = 0;
+	arr = ft_define_lis(stack_a->stack, stack_a->size, &i);
+	i -= 1;
+	j = 0;
+	while (i >= 0)
+	{
+		while (j <= stack_a->size)
+		{
+			if (stack_a->stack[0] != arr[i])
+			{
+				rev_ra(stack_a);
+			}
+			else
+			{
+				find_spot_on_b(stack_b, arr[i]);	
+			}
+			j++;
+		}
+		i--;
+	}
+	
 	print_st(stack_a);
 	print_st(stack_b);
 }
