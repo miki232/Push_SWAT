@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+         #
+#    By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 18:25:59 by mtoia             #+#    #+#              #
-#    Updated: 2022/11/01 16:49:27 by mtoia            ###   ########.fr        #
+#    Updated: 2022/11/02 17:49:01 by mardolin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,14 @@ PRINTF = ft_printf/ft_printf.a
 
 SRC = main.c src/utils.c src/split.c src/check.c src/push_moves.c src/rev_rot_moves.c src/rotate_moves.c \
 		src/swap_moves.c src/aldo_ritmo.c src/small_sort.c src/check_chunk.c src/moves.c src/utils_sort.c \
-		src/cin.c src/helpercin.c src/sortea.c
+		src/cin.c src/helpercin.c src/sortea.c src/cn_cin.c src/init.c src/free.c src/help_sortea.c
 
 HDRS = include/
 
 OBJ = $(SRC:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -ggdb3
 
 %.o: %.c 
 	@$(CC) $(CFLAGS) -I $(HDRS) -c $< -o $@

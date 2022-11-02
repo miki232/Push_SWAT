@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 11:39:12 by blackronos        #+#    #+#             */
-/*   Updated: 2022/11/01 17:39:54 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/02 17:11:25 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	push_to(t_stack *dest, t_stack *src)
 	}
 	dest->stack[0] = src->stack[0];
 	dest->i = 0;
-	while (dest->i <= dest->size)
+	while (dest->i < dest->size)
 	{
 		dest->stack[dest->i + 1] = dest->temp[dest->i];
 		dest->i++;

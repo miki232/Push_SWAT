@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   small_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:39:25 by mardolin          #+#    #+#             */
-/*   Updated: 2022/10/31 14:20:00 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/02 18:09:25 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void	five_guys(t_stack *stack_a, t_stack *stack_b)
 {
 	int	i;
 
-	i = 0;
-	while (i < 2)
+	i = -1;
+	while (++i < 2)
 	{
 		min_max_val(stack_a);
 		while (stack_a->stack[0] != stack_a->min)
@@ -101,14 +101,14 @@ void	five_guys(t_stack *stack_a, t_stack *stack_b)
 				rotate_a(stack_a);
 		}
 		if (!ordered_int(stack_a))
-		{
 			break ;
-		}
 		if (stack_a->stack[0] == stack_a->min)
-		{
 			push_to_b(stack_a, stack_b);
-		}
-		i++;
 	}
 	three_guys(stack_a);
+	while (i > 0)
+	{
+		push_to_a(stack_a, stack_b);
+		i--;
+	}
 }

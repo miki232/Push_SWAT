@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 14:42:40 by mardolin          #+#    #+#             */
-/*   Updated: 2022/11/01 16:52:42 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/02 17:46:35 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	shiva(t_stack *temp, t_stack *stack_a, t_stack *stack_b)
 
 int	*loader_int(char **argv, t_stack *stack_a, int i, int c)
 {
-	stack_a->stack = malloc(sizeof(int) * (stack_a->size));
+	stack_a->stack = malloc(sizeof(int *) * (stack_a->size));
 	if (!stack_a->stack)
 		return (0);
 	while (i < stack_a->size + c)

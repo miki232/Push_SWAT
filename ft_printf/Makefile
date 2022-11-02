@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+         #
+#    By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/09 12:28:21 by mtoia             #+#    #+#              #
-#    Updated: 2022/05/02 12:01:24 by mtoia            ###   ########.fr        #
+#    Updated: 2022/11/02 17:05:38 by mardolin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ OBJS			= $(SRCS:.c=.o)
 NAME = ft_printf.a
 
 CC = clang
-FLAGS = -W -Wall -Werror -Wextra -g3 -O3 -emit-llvm
+FLAGS = -Wall -ggdb3
 INC = ft_printf.h
 
 T_BLK = \033[5m
@@ -29,7 +29,8 @@ C_LMGN = \033[95m
 C_END = \033[0m
 
 FILES			=	ft_printf.c utils/ft_hexa.c utils/ft_printnbr.c utils/ft_putchar.c utils/ft_putstr.c \
-					utils/ft_uprint.c utils/ft_itoa.c utils/ft_ptr.c utils/ft_calloc.c utils/ft_bzero.c utils/ft_memset.c
+					utils/ft_uprint.c utils/ft_itoa.c utils/ft_ptr.c utils/ft_calloc.c utils/ft_bzero.c utils/ft_memset.c \
+					
 					
 OBJ := $(FILES:%.c=%.o)
 

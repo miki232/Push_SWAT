@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:06:16 by mardolin          #+#    #+#             */
-/*   Updated: 2022/11/01 16:48:36 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/02 17:57:36 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_stack
 	int		c;
 	int		*temp;
 	int		**cn;
-
+	int		e;
 }			t_stack;
 
 typedef struct s_chunk
@@ -114,5 +114,19 @@ void	sortc(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
 void	hold_first_num(t_stack *stack_a, int **cn, int j);
 void	hold_second_num(t_stack *stack_a, int **cn, int j);
 void	checkss(t_stack *stack_a, t_stack *temp);
+int		init_tmp_cn(t_stack *tmp_cn);
+int		init_struct(t_stack *stack_a, t_stack *stack_b);
+int		init_temp(t_stack *temp);
+int		**init_cin(int **chunk, t_stack *stack_a, t_stack *temp);
+void	cn_one(int **chunk, t_stack *temp, t_stack *tmp_cn);
+void	cn_two(int **chunk, t_stack *temp, t_stack *tmp_cn);
+void	cn_three(int **chunk, t_stack *temp, t_stack *tmp_cn);
+void	cn_four(int **chunk, t_stack *temp, t_stack *tmp_cn);
+void	cn_five(int **chunk, t_stack *temp, t_stack *tmp_cn);
+void	free_stuff(t_stack *temp);
+void	freechunk(t_stack *temp);
+int		init_tmp(t_stack *tmp);
+void	help(t_stack *stack_a, t_stack *tmp);
+void	help_end(t_stack *stack_a, t_stack *stack_b, t_stack *tmp);
 
 #endif
