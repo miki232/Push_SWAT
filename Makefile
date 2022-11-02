@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+         #
+#    By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 18:25:59 by mtoia             #+#    #+#              #
-#    Updated: 2022/11/02 17:49:01 by mardolin         ###   ########.fr        #
+#    Updated: 2022/11/02 19:43:12 by mtoia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ clean:
 fclean:
 	@rm -f $(NAME) $(OBJ)
 	# @make -C check/ fclean
+	@make -C ft_printf/ fclean
 	@echo "$(C_LGRN)➜ [$(NAME)] Program has been Cleared Successfully !$(C_END)"
 
 norme:

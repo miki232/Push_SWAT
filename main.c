@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/11/02 18:11:31 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/02 19:23:09 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,16 @@ void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 	init_struct(stack_a, stack_b);
 	arg = ft_split(argv[1], ' ');
 	stack_a->size = check_dig2(arg);
+	//print_st(stack_a);
+	if (stack_a->size <= 1)
+		exit (0);
 	loader_int(arg, stack_a, 0, 0);
 	stack_b->stack = malloc(sizeof(int *) * stack_a->size);
 	ft_equals(stack_a);
 	ft_ordered(stack_a);
-	if (stack_a->size == 3)
+	if (stack_a->size == 2)
+		swap_a(stack_a);
+	else if (stack_a->size == 3)
 		three_guys(stack_a);
 	else if (stack_a->size == 4)
 		four_guys(stack_a, stack_b);
@@ -59,13 +64,17 @@ void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 	init_struct(stack_a, stack_b);
 	check_dig(argv);
 	stack_a->size = argc - 1;
+	if (stack_a->size <= 1)
+		exit (0);
 	stack_a->k = 0;
 	stack_b->k = 0;
 	stack_b->stack = malloc(sizeof(int *) * stack_a->size);
 	loader_int(argv, stack_a, 1, 1);
 	ft_equals(stack_a);
 	ft_ordered(stack_a);
-	if (stack_a->size == 3)
+	if (stack_a->size == 2)
+		swap_a(stack_a);
+	else if (stack_a->size == 3)
 		three_guys(stack_a);
 	else if (stack_a->size == 4)
 		four_guys(stack_a, stack_b);
@@ -94,5 +103,6 @@ int	main(int argc, char **argv)
 		checker_two(&stack_a, &stack_b, argc, argv);
 	free(stack_a.stack);
 	free(stack_b.stack);
+	print_st(&stack_a);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 18:23:40 by mtoia             #+#    #+#             */
-/*   Updated: 2022/11/01 16:52:53 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/02 18:48:41 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ int	ft_atoi(const char *str)
 	}
 	value *= sign;
 	if (value < -2147483648 || value > 2147483647)
-		return (-1);
+	{
+		write(2, "Error\n", 7);
+		exit (0);
+	}
 	return ((int)value);
 }
 
