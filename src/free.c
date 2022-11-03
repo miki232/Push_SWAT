@@ -6,7 +6,7 @@
 /*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:44:05 by mardolin          #+#    #+#             */
-/*   Updated: 2022/11/02 17:54:20 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/03 14:08:40 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,18 @@ void	free_stuff(t_stack *temp)
 	free(temp->stack);
 	freechunk(temp);
 	free(temp->cn);
+}
+
+void	freearg(char **arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		free(arg[i]);
+		i++;
+	}
 }
 
 void	help_end(t_stack *stack_a, t_stack *stack_b, t_stack *tmp)
@@ -38,4 +50,10 @@ void	help_end(t_stack *stack_a, t_stack *stack_b, t_stack *tmp)
 		if (tmp->i >= stack_b->size)
 			tmp->i = 0;
 	}
+}
+
+void	init_atoi(t_help *help_atoi)
+{
+	help_atoi->sign = 1;
+	help_atoi->value = 0;
 }

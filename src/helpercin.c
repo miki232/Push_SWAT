@@ -73,7 +73,6 @@ void	move_ghelper(t_stack *stack_a, t_stack *stack_b)
 {
 	while (stack_b->stack[0] == stack_b->max && stack_b->size > 0)
 	{
-		//printf("%d\n", stack_b->size);
 		while (stack_b->stack[0] != stack_b->max)
 		{
 			rev_rb(stack_b);

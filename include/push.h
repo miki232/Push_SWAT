@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:06:16 by mardolin          #+#    #+#             */
-/*   Updated: 2022/11/02 18:40:33 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/03 14:08:51 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,12 @@ typedef struct s_chunk
 	int		*cnk_4;
 	int		*cnk_5;
 }		t_chunk;
+
+typedef struct s_help
+{
+	int		sign;
+	long	value;
+}		t_help;
 
 void	mmove_b(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
 void	endmmove(t_stack *stack_a, t_stack *stack_b, t_stack *temp, int **cn);
@@ -128,5 +134,8 @@ void	freechunk(t_stack *temp);
 int		init_tmp(t_stack *tmp);
 void	help(t_stack *stack_a, t_stack *tmp);
 void	help_end(t_stack *stack_a, t_stack *stack_b, t_stack *tmp);
+void	sort_how(t_stack *stack_a, t_stack *stack_b, t_stack *temp);
+void	freearg(char **arg);
+void	init_atoi(t_help *help_atoi);
 
 #endif

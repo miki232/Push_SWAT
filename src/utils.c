@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 18:23:40 by mtoia             #+#    #+#             */
-/*   Updated: 2022/11/02 18:48:41 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/03 14:08:30 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,30 @@
 
 int	ft_atoi(const char *str)
 {
-	int		sign;
-	long	value;
+	t_help	help_atoi;
 
-	value = 0;
-	sign = 1;
+	init_atoi(&help_atoi);
 	while (*str == ' ' || (*str <= 13 && *str >= 9))
 		str++;
 	if (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
-			sign *= -1;
+			help_atoi.sign *= -1;
 		str++;
 	}
 	while (*str != '\0' && *str >= '0' && *str <= '9')
 	{
-		value *= 10;
-		value += *str - '0';
+		help_atoi.value *= 10;
+		help_atoi.value += *str - '0';
 		str++;
 	}
-	value *= sign;
-	if (value < -2147483648 || value > 2147483647)
+	help_atoi.value *= help_atoi.sign;
+	if (help_atoi.value < -2147483648 || help_atoi.value > 2147483647)
 	{
 		write(2, "Error\n", 7);
 		exit (0);
 	}
-	return ((int)value);
+	return ((int)help_atoi.value);
 }
 
 void	check_dig(char **arg)
