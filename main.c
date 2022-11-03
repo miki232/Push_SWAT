@@ -6,12 +6,33 @@
 /*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 10:07:33 by mtoia             #+#    #+#             */
-/*   Updated: 2022/11/03 14:00:00 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/03 15:33:16 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/push.h"
+/*
+In computation, sorting is highly essential to access and manipulate data 
+efficiently. High performance sorting algorithms have always been in demand 
+so that computers may process data more quickly. Since the computer has become 
+a vital tool in various domains of human life, the various researchers have 
+investigated and presented numerous sorting algorithms to sort elements of list 
+with minimal execution time and least space. As the volume of data increases, 
+the urgency for efficient data processing algorithms also increases.
 
+Computationally and memory-efficient algorithms for sorting have always been in 
+demand for researchers and computational scientists. Data need to be sorted in 
+the required manner to draw useful details i.e. list of top ‘n’ items with 
+respect to the sale, ‘n’ devices connected with server as Internet of Things 
+(IoT) or a list of top ‘n’ scientists with respect to their publications. 
+In mathematical terms,sorting could be defined as: “Let input is 
+{n1, n2, n3, ..., nn} Output of the given sequence should be in a form 
+such that {n1 ≤ n2 ≤ n3 ≤ ... nn}”
+800A
+Useful link:
+https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with
+-two-stacks-d1e76a71789a
+*/
 void	sort_how(t_stack *stack_a, t_stack *stack_b, t_stack *temp)
 {
 	if (stack_a->size == 2)
