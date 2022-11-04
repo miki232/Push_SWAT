@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/13 18:25:59 by mtoia             #+#    #+#              #
-#    Updated: 2022/11/04 15:34:51 by mtoia            ###   ########.fr        #
+#    Created: 2022/10/29 16:19:49 by mtoia             #+#    #+#              #
+#    Updated: 2022/11/04 15:34:57 by mtoia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = checker
 
 T_BLK = \033[5m
 T_NRM = \033[25m
@@ -24,31 +24,29 @@ C_END = \033[0m
 IND = 0
 PER = 0
 
-PRINTF = ft_printf/ft_printf.a
+SRC = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c checker.c check.c utils.c \
+		push_moves.c rev_rot_moves.c rotate_moves.c swap_moves.c
 
-SRC = main.c src/utils.c src/split.c src/check.c src/push_moves.c src/rev_rot_moves.c src/rotate_moves.c \
-		src/swap_moves.c src/aldo_ritmo.c src/small_sort.c src/check_chunk.c src/moves.c src/utils_sort.c \
-		src/cin.c src/helpercin.c src/sortea.c src/cn_cin.c src/init.c src/free.c src/help_sortea.c
+HDRS = checker.c
 
-HDRS = include/
 
 OBJ = $(SRC:.c=.o)
 
-CC = gcc
 
+
+CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
 %.o: %.c 
-	@$(CC) $(CFLAGS) -I $(HDRS) -c $< -o $@
+	@$(CC) $(CFLAGS) -I {HDRS} -c $< -o $@
 	@printf "$(T_CLR)$(C_LYLW)➜ ➜ progress: %3d %% $(C_END)\n\033[1A$(C_END)" $(PER);
 
 $(NAME): $(OBJ)
-	@make -C ft_printf/ 
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(PRINTF)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 	@echo "$(C_LGRN)➜ [$(NAME)] Program has been Compiled Successfully !$(C_END)"
 
 all: $(NAME)
-	@make clean
+	make clean
 
 clean:
 	@rm -f $(OBJ)
@@ -56,9 +54,6 @@ clean:
 
 fclean:
 	@rm -f $(NAME) $(OBJ)
-	@rm -f checker 
-	@make -C check/ fclean
-	@make -C ft_printf/ fclean
 	@echo "$(C_LGRN)➜ [$(NAME)] Program has been Cleared Successfully !$(C_END)"
 
 norme:
@@ -69,8 +64,4 @@ re:
 	@make  $(NAME)
 	@echo "$(C_LGRN)➜ [$(NAME)] Program has been re-Compiled Successfully !$(C_END)"
 
-bonus :
-	@make -C check/
-	@cp check/checker .
-
-.PHONY: all clean  fclean  re bonus
+.PHONY: all clean  fclean  re 
