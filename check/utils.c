@@ -3,90 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 16:25:42 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/29 16:42:06 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/04 16:26:17 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "checker.h"
-
-int	ft_atoi(const char *str)
-{
-	int		sign;
-	long	value;
-
-	value = 0;
-	sign = 1;
-	while (*str == ' ' || (*str <= 13 && *str >= 9))
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign *= -1;
-		str++;
-	}
-	while (*str != '\0' && *str >= '0' && *str <= '9')
-	{
-		value *= 10;
-		value += *str - '0';
-		str++;
-	}
-	value *= sign;
-	if (value < -2147483648 || value > 2147483647)
-		return (-1);
-	return ((int)value);
-}
-
-void	check_dig(char **arg)
-{
-	int	i;
-
-	i = 1;
-	while (arg[i])
-		isdigits(arg[i++]);
-}
-
-int	check_dig2(char **arg)
-{
-	int	i;
-
-	i = 0;
-	while (arg[i])
-	{
-		isdigits(arg[i]);
-		i++;
-	}
-	return (i);
-}
-
-void	print_st(t_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	while (i < stack->size)
-	{
-		printf("%d ", stack->stack[i]);
-		i++;
-	}
-	printf(" stack_%c ha %d elementi \n----------\n", stack->id, stack->size);
-}
-
-int	has_spaces(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == ' ')
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 int	get_word(const char *s, char c)
 {
@@ -115,9 +39,9 @@ char	*ft_substrss(const char *s, int start, int len)
 
 	if (!s)
 		return (NULL);
-	if ((int) start >= ft_strlen((char *)s))
+	if ((int) start >= (int)ft_strlen((char *)s))
 		return (ft_strdup(""));
-	if ((int)len > ft_strlen((char *)s))
+	if ((int)len > (int)ft_strlen((char *)s))
 		len = ft_strlen((char *)s);
 	str = (char *)malloc(sizeof(*s) * (len + 1));
 	if (!str)
@@ -175,4 +99,16 @@ int	ft_strcmp(char *strg1, char *strg2)
 		return (0);
 	else
 		return (*strg1 - *strg2);
+}
+
+int	char_array_len(char **str)
+{
+	int	len;
+
+	len = 0;
+	if (str == NULL)
+		return (0);
+	while (str[len] != NULL)
+		len++;
+	return (len);
 }

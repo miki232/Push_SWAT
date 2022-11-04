@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_moves.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 11:39:12 by blackronos        #+#    #+#             */
-/*   Updated: 2022/11/03 17:05:07 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/04 15:59:37 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,29 @@
 
 int	push_to(t_stack *dest, t_stack *src)
 {
-	int	*temp;
-	int	i;
-
-	temp = malloc(sizeof(int) * dest->size);
-	i = 0;
+	dest->i = 0;
+	dest->temp = malloc(sizeof(int) * dest->size);
 	if (src == NULL)
 		return (0);
-	while (i < dest->size)
+	while (dest->i < dest->size)
 	{
-		temp[i] = dest->stack[i];
-		i++;
+		dest->temp[dest->i] = dest->stack[dest->i];
+		dest->i++;
 	}
 	dest->stack[0] = src->stack[0];
-	i = 0;
-	while (i <= dest->size)
+	dest->i = 0;
+	while (dest->i < dest->size)
 	{
-		dest->stack[i + 1] = temp[i];
-		i++;
+		dest->stack[dest->i + 1] = dest->temp[dest->i];
+		dest->i++;
 	}
-	i = 0;
-	while (i < src->size)
+	dest->i = 0;
+	while (dest->i < src->size)
 	{
-		src->stack[i] = src->stack[i + 1];
-		i++;
+		src->stack[dest->i] = src->stack[dest->i + 1];
+		dest->i++;
 	}
-	free(temp);
+	free(dest->temp);
 	return (0);
 }
 
@@ -59,5 +56,4 @@ void	push_to_b(t_stack *stack_a, t_stack *stack_b)
 	push_to(stack_b, stack_a);
 	stack_a->size -= 1;
 	stack_b->size += 1;
-
 }
