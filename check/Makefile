@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+         #
+#    By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 16:19:49 by mtoia             #+#    #+#              #
-#    Updated: 2022/11/05 11:55:17 by mardolin         ###   ########.fr        #
+#    Updated: 2022/11/05 14:45:34 by mtoia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,15 +24,16 @@ C_END = \033[0m
 IND = 0
 PER = 0
 
+PRINTF = ../ft_printf/ft_printf.a
+
+
 SRC = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c checker.c check.c utils.c \
-		push_moves.c rev_rot_moves.c rotate_moves.c swap_moves.c utils_n.c checker_utils.c print_error.c
+		push_moves.c rev_rot_moves.c rotate_moves.c swap_moves.c checker_utils.c utils_n.c print_error.c
 
 HDRS = checker.c
 
 
 OBJ = $(SRC:.c=.o)
-
-
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
@@ -42,7 +43,8 @@ CFLAGS = -Wall -Werror -Wextra
 	@printf "$(T_CLR)$(C_LYLW)➜ ➜ progress: %3d %% $(C_END)\n\033[1A$(C_END)" $(PER);
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@make -C ../ft_printf/ 
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(PRINTF)
 	@echo "$(C_LGRN)➜ [$(NAME)] Program has been Compiled Successfully !$(C_END)"
 
 all: $(NAME)

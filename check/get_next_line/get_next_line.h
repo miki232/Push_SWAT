@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 10:28:43 by mtoia             #+#    #+#             */
-/*   Updated: 2022/04/29 15:29:26 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/05 14:43:00 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
 void	*ft_memcpy(void *dest, const void *source, size_t num);
 char	*ft_strdup(const char *s1);
-size_t	ft_strlen(const char *str);
+size_t	ft_strlenn(const char *str);
 char	*ft_substr(char *s, unsigned int start, size_t len, int need_free);
 int		ft_srch(const char *s, char c);
 

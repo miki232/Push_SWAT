@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 16:10:39 by mardolin          #+#    #+#             */
-/*   Updated: 2022/11/04 16:10:53 by mardolin         ###   ########.fr       */
+/*   Created: 2022/11/04 20:27:41 by mtoia             #+#    #+#             */
+/*   Updated: 2022/11/04 20:31:00 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	*loader_int(char **argv, t_stack *stack_a, int i, int c)
 {
-	stack_a->stack = malloc(sizeof(int) * (stack_a->size));
+	stack_a->stack = malloc(sizeof(int **) * (stack_a->size));
 	if (!stack_a->stack)
 		return (0);
 	while (i < stack_a->size + c)
@@ -26,6 +26,18 @@ int	*loader_int(char **argv, t_stack *stack_a, int i, int c)
 		i++;
 	}
 	return (0);
+}
+
+void	freearg(char **arg)
+{
+	int	i;
+
+	i = 0;
+	while (arg[i])
+	{
+		free(arg[i]);
+		i++;
+	}
 }
 
 int	init_struct(t_stack *stack_a, t_stack *stack_b)
@@ -45,7 +57,10 @@ void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv)
 	init_struct(stack_a, stack_b);
 	arg = ft_split(argv[1], ' ');
 	stack_a->size = check_dig2(arg);
+	stack_b->stack = malloc(sizeof(int *) * stack_a->size);
 	loader_int(arg, stack_a, 0, 0);
+	freearg(arg);
+	free(arg);
 	ft_equals(stack_a);
 	ft_ordered(stack_a);
 }
@@ -57,36 +72,8 @@ void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv)
 	stack_a->size = argc - 1;
 	stack_a->k = 0;
 	stack_b->k = 0;
+	stack_b->stack = malloc(sizeof(int *) * stack_a->size);
 	loader_int(argv, stack_a, 1, 1);
 	ft_equals(stack_a);
 	ft_ordered(stack_a);
-}
-
-char	**read_move(int size)
-{
-	char	**moves;
-	int		max_moves;
-	int		i;
-
-	i = 0;
-	max_moves = 9000;
-	if (size <= 3)
-		max_moves = 3;
-	else if (size <= 5)
-		max_moves = 12;
-	else if (size <= 100)
-		max_moves = 1200;
-	moves = malloc(max_moves * sizeof(char *));
-	while (1)
-	{
-		moves[i] = malloc(4 * sizeof(char));
-		moves[i] = get_next_line(0);
-		if (moves[i] == NULL)
-		{
-			free(moves[i]);
-			break ;
-		}
-		i++;
-	}
-	return (moves);
 }

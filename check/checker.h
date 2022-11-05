@@ -3,23 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:32:58 by mtoia             #+#    #+#             */
-/*   Updated: 2022/11/05 11:56:09 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/05 14:44:25 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
-
-# include <stdlib.h>
-# include <stdio.h>
-# include <signal.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <limits.h>
 # include "get_next_line/get_next_line.h"
+# include "../ft_printf/ft_printf.h"
 
 typedef struct s_stack
 {
@@ -44,6 +38,8 @@ typedef struct s_stack
 	int		mv_second;
 }			t_stack;
 
+void	print_error(char *message);
+int		ft_printf(const char *str, ...);
 char	**ft_split(const char *s, char c);
 int		ft_atoi(const char *str);
 void	check_dig(char **arg);
@@ -66,10 +62,17 @@ void	swap_a_b(t_stack *stack_a, t_stack *stack_b);
 void	push_to_a(t_stack *stack_a, t_stack *stack_b);
 void	push_to_b(t_stack *stack_a, t_stack *stack_b);
 int		ft_ordered(t_stack *stack_a);
-void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv);
+void	ft_equals(t_stack *stack_a);
+int		isdigits(char *arg);
+int		ft_space(char *arg);
+void	check_move(t_stack *stack_a);
 void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
-char	**read_move(int size);
-int		char_array_len(char **str);
-void	print_error(char *message);
+void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv);
+int		init_struct(t_stack *stack_a, t_stack *stack_b);
+void	freearg(char **arg);
+int		*loader_int(char **argv, t_stack *stack_a, int i, int c);
+char	*ft_substrss(const char *s, int start, int len);
+int		get_word(const char *s, char c);
+void	run_moves(t_stack *stack_a, t_stack *stack_b, char *moves);
 
 #endif

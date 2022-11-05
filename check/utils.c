@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 16:25:42 by mtoia             #+#    #+#             */
-/*   Updated: 2022/11/04 16:26:17 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/04 20:27:18 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	*ft_substrss(const char *s, int start, int len)
 
 	if (!s)
 		return (NULL);
-	if ((int) start >= (int)ft_strlen((char *)s))
+	if ((int)start >= (int)ft_strlen((char *)s))
 		return (ft_strdup(""));
 	if ((int)len > (int)ft_strlen((char *)s))
 		len = ft_strlen((char *)s);
@@ -99,16 +99,4 @@ int	ft_strcmp(char *strg1, char *strg2)
 		return (0);
 	else
 		return (*strg1 - *strg2);
-}
-
-int	char_array_len(char **str)
-{
-	int	len;
-
-	len = 0;
-	if (str == NULL)
-		return (0);
-	while (str[len] != NULL)
-		len++;
-	return (len);
 }

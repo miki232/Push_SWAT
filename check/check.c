@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:14:31 by mtoia             #+#    #+#             */
-/*   Updated: 2022/11/05 12:01:16 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/05 14:42:08 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,10 @@ void	ft_equals(t_stack *stack_a)
 		while (j < stack_a->size)
 		{
 			if (stack_a->stack[i] == stack_a->stack[j])
-				print_error("Error\n");
+			{
+				write(2, "Error\n", 7);
+				exit(0);
+			}
 			j++;
 		}
 		i++;
@@ -62,7 +65,7 @@ int	isdigits(char *arg)
 			i++;
 		else
 		{
-			write(2, "Error\n", 6);
+			write(2, "Error\n", 7);
 			exit(0);
 		}
 	}
@@ -81,4 +84,12 @@ int	ft_space(char *arg)
 		i++;
 	}
 	return (0);
+}
+
+void	check_move(t_stack *stack_a)
+{
+	if (ft_ordered(stack_a))
+		ft_printf("OK\n");
+	else
+		ft_printf("KO\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42roma.it>            +#+  +:+       +#+        */
+/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 11:28:32 by mtoia             #+#    #+#             */
-/*   Updated: 2022/04/04 11:17:52 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/05 14:43:27 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ char	*ft_strjoin(char *s1, char *s2)
 		return (NULL);
 	j = 0;
 	ix = 0;
-	ls1 = ft_strlen(s1);
-	ls2 = ft_strlen(s2);
+	ls1 = ft_strlenn(s1);
+	ls2 = ft_strlenn(s2);
 	str = (char *)malloc(sizeof(char) * ls1 + ls2 + 1);
 	if (!str)
 		return (0);
@@ -84,13 +84,13 @@ char	*ft_substr(char *s, unsigned int start, size_t len, int need_free)
 	if (!s)
 		return (0);
 	i = 0;
-	if (ft_strlen(s) <= len)
-		str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (ft_strlenn(s) <= len)
+		str = (char *)malloc(sizeof(char) * ft_strlenn(s) + 1);
 	else
 		str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (0);
-	if (start < (unsigned int) ft_strlen(s))
+	if (start < (unsigned int) ft_strlenn(s))
 	{
 		while (i < len && s[start] != '\0')
 		{
@@ -110,7 +110,7 @@ char	*ft_strdup(const char *s1)
 	char	*str;
 	size_t	i;
 
-	str = ((char *)malloc(sizeof(char) * ft_strlen(s1) + 1));
+	str = ((char *)malloc(sizeof(char) * ft_strlenn(s1) + 1));
 	i = 0;
 	if (str == NULL)
 		return (NULL);

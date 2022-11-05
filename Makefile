@@ -6,7 +6,7 @@
 #    By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/13 18:25:59 by mtoia             #+#    #+#              #
-#    Updated: 2022/11/04 15:34:51 by mtoia            ###   ########.fr        #
+#    Updated: 2022/11/04 20:42:46 by mtoia            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ fclean:
 norme:
 	@norminette $(SRC)
 
-re:
+re: 
 	@rm -f $(NAME) $(OBJ)
 	@make  $(NAME)
 	@echo "$(C_LGRN)➜ [$(NAME)] Program has been re-Compiled Successfully !$(C_END)"
@@ -73,4 +73,4 @@ bonus :
 	@make -C check/
 	@cp check/checker .
 
-.PHONY: all clean  fclean  re bonus
+.PHONY: all clean fclean re bonus
