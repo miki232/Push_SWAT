@@ -6,7 +6,7 @@
 /*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:25:43 by mtoia             #+#    #+#             */
-/*   Updated: 2022/11/05 14:40:54 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/05 14:58:50 by mtoia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	print_st(t_stack *stack)
 	i = 0;
 	while (i < stack->size)
 	{
-		printf("%d ", stack->stack[i]);
+		ft_printf("%d ", stack->stack[i]);
 		i++;
 	}
 	ft_printf(" stack_%c ha %d elementi \n----------\n", stack->id, stack->size);
