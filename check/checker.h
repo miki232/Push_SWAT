@@ -6,12 +6,19 @@
 /*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:32:58 by mtoia             #+#    #+#             */
-/*   Updated: 2022/11/04 16:26:33 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/05 11:56:09 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHECKER_H
 # define CHECKER_H
+
+# include <stdlib.h>
+# include <stdio.h>
+# include <signal.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
 # include "get_next_line/get_next_line.h"
 
 typedef struct s_stack
@@ -63,5 +70,6 @@ void	checker_one(t_stack *stack_a, t_stack *stack_b, char **argv);
 void	checker_two(t_stack *stack_a, t_stack *stack_b, int argc, char **argv);
 char	**read_move(int size);
 int		char_array_len(char **str);
+void	print_error(char *message);
 
 #endif

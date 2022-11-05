@@ -6,7 +6,7 @@
 /*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 15:56:28 by mardolin          #+#    #+#             */
-/*   Updated: 2022/11/04 15:58:05 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/05 11:55:00 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_atoi(const char *str)
 	}
 	value *= sign;
 	if (value < -2147483648 || value > 2147483647)
-		return (-1);
+		print_error("Error\n");
 	return ((int)value);
 }
 

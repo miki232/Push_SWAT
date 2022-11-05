@@ -6,7 +6,7 @@
 #    By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/29 16:19:49 by mtoia             #+#    #+#              #
-#    Updated: 2022/11/04 16:16:44 by mardolin         ###   ########.fr        #
+#    Updated: 2022/11/05 11:55:17 by mardolin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ IND = 0
 PER = 0
 
 SRC = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c checker.c check.c utils.c \
-		push_moves.c rev_rot_moves.c rotate_moves.c swap_moves.c utils_n.c checker_utils.c
+		push_moves.c rev_rot_moves.c rotate_moves.c swap_moves.c utils_n.c checker_utils.c print_error.c
 
 HDRS = checker.c
 

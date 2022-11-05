@@ -6,7 +6,7 @@
 /*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 17:32:58 by mtoia             #+#    #+#             */
-/*   Updated: 2022/11/04 16:26:02 by mardolin         ###   ########.fr       */
+/*   Updated: 2022/11/05 11:43:37 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 	{
+		write(2, "Error\n", 6);
 		exit(0);
 	}
 	if (ft_space(argv[1]))

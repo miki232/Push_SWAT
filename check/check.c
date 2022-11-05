@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtoia <mtoia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mardolin <mardolin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 17:14:31 by mtoia             #+#    #+#             */
-/*   Updated: 2022/10/29 16:36:17 by mtoia            ###   ########.fr       */
+/*   Updated: 2022/11/05 12:01:16 by mardolin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,7 @@ void	ft_equals(t_stack *stack_a)
 		while (j < stack_a->size)
 		{
 			if (stack_a->stack[i] == stack_a->stack[j])
-			{
-				printf("equals\n");
-				exit(0);
-			}
+				print_error("Error\n");
 			j++;
 		}
 		i++;
@@ -65,7 +62,7 @@ int	isdigits(char *arg)
 			i++;
 		else
 		{
-			printf("ERROR");
+			write(2, "Error\n", 6);
 			exit(0);
 		}
 	}
